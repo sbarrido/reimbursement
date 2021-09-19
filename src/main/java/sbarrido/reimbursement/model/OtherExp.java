@@ -1,4 +1,4 @@
-package sbarrido.reimbursement.model;
+package sbarrido.model;
 import java.util.*;
 import java.awt.*;
 
