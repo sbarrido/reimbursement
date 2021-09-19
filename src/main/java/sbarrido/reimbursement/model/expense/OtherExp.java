@@ -1,10 +1,18 @@
-package sbarrido.model;
+package sbarrido.reimbursement.model.expense;
 import java.util.*;
+
+import javax.persistence.DiscriminatorValue;
+import javax.persistence.Entity;
+
 import java.awt.*;
 
+@Entity
+@DiscriminatorValue("other_expense")
 public class OtherExp extends Reimbursement {
     private String vendor;
     private Image receipt;
+
+    protected OtherExp() {}
 
     public OtherExp(Date date, String description, String vendor, Image receipt, double cost) {
         setDate(date);
