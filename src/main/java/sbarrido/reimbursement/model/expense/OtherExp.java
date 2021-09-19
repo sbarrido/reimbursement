@@ -4,20 +4,18 @@ import java.util.*;
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 
-import java.awt.*;
-
 @Entity
 @DiscriminatorValue("other_expense")
 public class OtherExp extends Reimbursement {
     private String vendor;
-    private Image receipt;
+    private String receiptPath;
 
     protected OtherExp() {}
 
-    public OtherExp(Date date, String description, String vendor, Image receipt, double cost) {
+    public OtherExp(Date date, String description, String vendor, String receiptPath, double cost) {
         setDate(date);
         setDesc(description);
-        setImage(receipt);
+        setImagePath(receiptPath);
         setCost(cost);
     }
 
@@ -27,14 +25,14 @@ public class OtherExp extends Reimbursement {
     public void setVendor(String s) {
         this.vendor = s;
     }
-    public void setImage(Image receipt) {
-        this.receipt = receipt;
+    public void setImagePath(String path) {
+        this.receiptPath = path;
     }
 
     public String getVendor() {
         return this.vendor;
     }
-    public Image getImg() {
-        return this.receipt;
+    public String getImgPath() {
+        return this.receiptPath;
     }
 }
