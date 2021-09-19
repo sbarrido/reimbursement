@@ -1,9 +1,11 @@
 package sbarrido.reimbursement.model.expense;
 
 import javax.persistence.Entity;
+import javax.persistence.Id;
 
 @Entity
 public class Destination {
+    @Id
     private String location;
     private double distance;
 
