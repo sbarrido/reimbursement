@@ -1,27 +1,15 @@
-package sbarrido.reimbursement.model.user;
+package sbarrido.reimbursement.dto.model;
 
 import java.util.Set;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
+public class UserPostDto {
 
-@Entity
-public class User {
-    @Id
-    @GeneratedValue
     private String id;
     private String username;
     private String password;
-    @OneToMany
-    private Set<Role> roles;
+    private Set<String> roles;
 
-    public User() {}
-
-    public User(String name, String password) {
-
-    }
+    public UserPostDto() {}
 
     public String getId() {
         return this.id;
@@ -32,17 +20,20 @@ public class User {
     public String getPassword() {
         return this.password;
     }
-    public Set<Role> getRoles() {
+    public Set<String> getRoles() {
         return this.roles;
     }
 
+    public void setId(String val) {
+        this.id = val;
+    }
     public void setUsername(String val) {
         this.username = val;
     }
-    public void setPasswrd(String val) {
+    public void setPassword(String val) {
         this.password = val;
     }
-    public void setRoles(Set<Role> vals) {
+    public void setRoles(Set<String> vals) {
         this.roles = vals;
     }
 }

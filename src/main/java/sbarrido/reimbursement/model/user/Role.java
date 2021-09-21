@@ -9,7 +9,6 @@ public class Role {
     @Id
     @GeneratedValue
     private String id;
-
     private String role;
 
     public Role() {}
