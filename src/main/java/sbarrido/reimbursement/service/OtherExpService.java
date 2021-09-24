@@ -18,7 +18,7 @@ public class OtherExpService {
     }
 
     public Set<OtherExp> getAllOtherExp() {
-        Set<OtherExp> target = oRepository.findAll();
+        Set<OtherExp> target = (HashSet<OtherExp>) oRepository.findAll();
 
         return target;
     }

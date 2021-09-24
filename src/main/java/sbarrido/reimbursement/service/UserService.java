@@ -14,7 +14,7 @@ import java.util.HashSet;
 public class UserService {
     private UserRepository uRepository;
 
-    public UserSerivce(UserRepository repo) {
+    public UserService(UserRepository repo) {
         this.uRepository = repo;
     }
 
@@ -24,7 +24,7 @@ public class UserService {
         return target;
     }
     public User getUser(User user) {
-        User target = uRepository.findById(user.getID()).get();
+        User target = uRepository.findById(user.getId()).get();
 
         return target;
     }
@@ -35,9 +35,11 @@ public class UserService {
     }
     public User createUser(User user) {
         User target = null;
-        if(!uRepository.existsById(user.getId)) {
+        if(!uRepository.existsById(user.getId())) {
             target = uRepository.save(user);
         }
+
+        return target;
     }
     public User updateUser(User user) {
         User target = null;
