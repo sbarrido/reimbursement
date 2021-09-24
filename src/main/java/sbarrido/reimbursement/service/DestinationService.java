@@ -24,12 +24,21 @@ public class DestinationService {
         return target;
     }
     public Destination getDestination(Destination destination) {
-        Destination target = dRepository.findByLocation(destination.getDest());
+        Destination target = dRepository.findById(destination.getId()).get();
             
         return target;
     }
+    public Destination getDestination(String location) {
+        Destination target = dRepository.findByLocation(location);
+
+        return target;
+    }
     public Destination createDestination(Destination destination) {
-        return dRepository.save(destination);
+        Destination target = null;
+        if(!dRepository.existsById(destination.getId())) {   
+            target = dRepository.save(destination);
+        }
+        return target
     }
     
     @Transactional
