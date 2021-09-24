@@ -3,6 +3,7 @@ package sbarrido.reimbursement.dto.model;
 import java.util.Date;
 
 public class OtherExpDto { 
+    private Long id;
     private Date date;
     private String description;
     private double cost;
@@ -11,6 +12,9 @@ public class OtherExpDto {
 
     public OtherExpDto() {}
 
+    public Long getId() {
+        return this.id;
+    }
     public Date getDate() {
         return this.date;
     }
@@ -27,6 +31,9 @@ public class OtherExpDto {
         return this.receiptPath;
     }
 
+    public void setId(Long id) {
+        this.id = id;
+    }
     public void setDate(Date date) {
         this.date = date;
     }

@@ -3,6 +3,7 @@ package sbarrido.reimbursement.dto.model;
 import java.util.Date;
 
 public class MileageDto { 
+    private Long id;
     private Date date;
     private String description;
     private DestinationDto destDto;
@@ -10,6 +11,9 @@ public class MileageDto {
 
     public MileageDto() {}
 
+    public Long getId() {
+        return this.id;
+    }
     public Date getDate() {
         return this.date;
     }
@@ -23,6 +27,9 @@ public class MileageDto {
         return this.cost;
     }
 
+    public void setId(Long id) {
+        this.id = id;
+    }
     public void setDate(Date date) {
         this.date = date;
     }

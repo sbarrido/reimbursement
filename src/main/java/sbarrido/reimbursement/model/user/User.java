@@ -39,7 +39,7 @@ public class User {
     public void setUsername(String val) {
         this.username = val;
     }
-    public void setPasswrd(String val) {
+    public void setPassword(String val) {
         this.password = val;
     }
     public void setRoles(Set<Role> vals) {

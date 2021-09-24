@@ -1,4 +1,6 @@
 package sbarrido.reimbursement.model.expense;
+
+import sbarrido.reimbursement.model.destination.Destination;
 import java.util.Date;
 
 import javax.persistence.DiscriminatorValue;
@@ -13,7 +15,7 @@ public class Mileage extends Reimbursement {
     @OneToOne
     private Destination destination;
 
-    protected Mileage() {}
+    public Mileage() {}
 
     public Mileage(Date date, String description, Destination destination) {
         setDate(date);

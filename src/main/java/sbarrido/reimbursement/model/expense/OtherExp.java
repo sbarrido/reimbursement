@@ -10,7 +10,7 @@ public class OtherExp extends Reimbursement {
     private String vendor;
     private String receiptPath;
 
-    protected OtherExp() {}
+    public OtherExp() {}
 
     public OtherExp(Date date, String description, String vendor, String receiptPath, double cost) {
         setDate(date);
