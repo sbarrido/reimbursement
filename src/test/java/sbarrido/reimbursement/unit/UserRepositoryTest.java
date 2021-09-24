@@ -23,7 +23,7 @@ public class UserRepositoryTest {
     @Test
     public void saveUserTest() {
         assertThat(userRepo.findById(1L)).isEmpty();
-        
+
         User testUser = userRepo.save(new User("Test", "pass"));
 
         User retrieved = userRepo.findById(testUser.getId()).get();
