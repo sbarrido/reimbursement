@@ -11,7 +11,7 @@ import javax.persistence.OneToMany;
 public class User {
     @Id
     @GeneratedValue
-    private String id;
+    private Long id;
     private String username;
     private String password;
     @OneToMany
@@ -20,10 +20,11 @@ public class User {
     public User() {}
 
     public User(String name, String password) {
-
+        setUsername(name);
+        setPassword(password);
     }
 
-    public String getId() {
+    public Long getId() {
         return this.id;
     }
     public String getUsername() {

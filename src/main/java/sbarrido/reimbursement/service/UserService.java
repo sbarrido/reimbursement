@@ -7,7 +7,6 @@ import org.springframework.transaction.annotation.Transactional;
 import sbarrido.reimbursement.repository.user.UserRepository;
 import sbarrido.reimbursement.model.user.User;
 
-import java.util.Set;
 import java.util.HashSet;
 
 @Service
@@ -18,8 +17,8 @@ public class UserService {
         this.uRepository = repo;
     }
 
-    public Set<User> getAllUser() {
-        Set<User> target = (HashSet<User>) uRepository.findAll();
+    public HashSet<User> getAllUser() {
+        HashSet<User> target = (HashSet<User>) uRepository.findAll();
 
         return target;
     }
@@ -34,11 +33,13 @@ public class UserService {
         return target;
     }
     public User createUser(User user) {
+        /**
         User target = null;
         if(!uRepository.existsById(user.getId())) {
             target = uRepository.save(user);
         }
-
+        **/
+        User target = uRepository.save(user);
         return target;
     }
     public User updateUser(User user) {

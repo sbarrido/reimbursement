@@ -4,13 +4,13 @@ import java.util.Set;
 
 public class UserGetDto {
 
-    private String id;
+    private Long id;
     private String username;
     private Set<String> roles;
 
     public UserGetDto() {}
 
-    public String getId() {
+    public Long getId() {
         return this.id;
     }
     public String getUsername() {
@@ -20,7 +20,7 @@ public class UserGetDto {
         return this.roles;
     }
 
-    public void setId(String val) {
+    public void setId(Long val) {
         this.id = val;
     }
     public void setUsername(String val) {
