@@ -8,7 +8,7 @@ import javax.persistence.Id;
 public class Destination {
     @Id
     @GeneratedValue
-    private long id;
+    private Long id;
     private String location;
     private double distance;
 
@@ -26,7 +26,7 @@ public class Destination {
         this.distance = dist;
     }
 
-    public long getId() {
+    public Long getId() {
         return this.id;
     }
     public String getDest() {
