@@ -1,8 +1,6 @@
 package sbarrido.reimbursement.service;
 
-
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
 import sbarrido.reimbursement.repository.expense.OtherExpRepository;
 import sbarrido.reimbursement.model.expense.OtherExp;
@@ -10,6 +8,7 @@ import sbarrido.reimbursement.model.expense.OtherExp;
 import java.util.Set;
 import java.util.HashSet;
 
+@Service
 public class OtherExpService {
     private OtherExpRepository oRepository;
 

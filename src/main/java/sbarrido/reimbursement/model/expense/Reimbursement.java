@@ -8,6 +8,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 @Entity
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
@@ -18,6 +20,8 @@ public abstract class Reimbursement {
     @GeneratedValue
     private Long id;
     protected double cost;
+
+    @Temporal(TemporalType.DATE)
     private Date date;
     private String description;
 

@@ -4,10 +4,7 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.AfterEach;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
-import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase.Replace;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
-import org.springframework.test.annotation.Rollback;
 
 import static org.assertj.core.api.Assertions.*;
 
@@ -15,6 +12,8 @@ import sbarrido.reimbursement.repository.expense.OtherExpRepository;
 import sbarrido.reimbursement.model.expense.OtherExp;
 
 import java.util.List;
+import java.time.LocalDate;
+import java.time.ZoneId;
 import java.util.Arrays;
 import java.util.Date;
 
@@ -70,7 +69,16 @@ public class OtherExpRepositoryTest {
     public void findOtherExpTest() {
         OtherExp byName = oRepo.findByVendor("Vendor2");
 
-        
+        Date target = new Date();
+        LocalDate localDate = target.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+        int year = localDate.getYear();
+        int month = localDate.getMonthValue();
+
+        List<OtherExp> byDate = oRepo.findByYearAndMonth(year, month);
+        OtherExp found = byDate.get(1);
+
+        assertThat(byDate.size()).isEqualTo(2);
+        assertThat(found.getVendor()).isEqualTo("Vendor2");
         assertThat(byName.getVendor()).isEqualTo("Vendor2");
         assertThat(byName.getImgPath()).isEqualTo("Path2");
     }

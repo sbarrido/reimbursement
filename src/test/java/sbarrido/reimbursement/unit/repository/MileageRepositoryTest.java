@@ -4,10 +4,8 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.AfterEach;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
-import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase.Replace;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
-import org.springframework.test.annotation.Rollback;
+
 
 import static org.assertj.core.api.Assertions.*;
 
@@ -16,6 +14,8 @@ import sbarrido.reimbursement.model.expense.Mileage;
 import sbarrido.reimbursement.model.destination.Destination;
 
 import java.util.List;
+import java.time.LocalDate;
+import java.time.ZoneId;
 import java.util.Arrays;
 import java.util.Date;
 
@@ -66,7 +66,17 @@ public class MileageRepositoryTest {
     @Test
     public void findMileageTest() {
         Mileage byName = mRepo.findByDestination(first);
-        
+
+        Date target = new Date();
+        LocalDate localDate = target.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+        int year = localDate.getYear();
+        int month = localDate.getMonthValue();
+
+        List<Mileage> byDate = mRepo.findByYearAndMonth(year, month);
+        Mileage found = byDate.get(1);
+
+        assertThat(byDate.size()).isEqualTo(2);
+        assertThat(found.getDest().getDest()).isEqualTo("Indianapolis");
         assertThat(byName.getDest().getDest()).isEqualTo("Fort Wayne");
     }
 
