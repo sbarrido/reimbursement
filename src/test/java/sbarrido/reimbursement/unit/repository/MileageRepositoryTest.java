@@ -66,10 +66,8 @@ public class MileageRepositoryTest {
     @Test
     public void findMileageTest() {
         Mileage byName = mRepo.findByDestination(first);
-
         
         assertThat(byName.getDest().getDest()).isEqualTo("Fort Wayne");
-        assertThat(byName.getId()).isEqualTo(byName.getId());
     }
 
     @Test
