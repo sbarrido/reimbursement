@@ -1,6 +1,8 @@
 package sbarrido.reimbursement.dto.model;
 
-public class DestinationDto {
+import org.springframework.hateoas.RepresentationModel;
+
+public class DestinationDto extends RepresentationModel<DestinationDto> {
     private Long id;
     private String location;
     private double distance;
