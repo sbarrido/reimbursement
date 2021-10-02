@@ -1,6 +1,6 @@
 package sbarrido.reimbursement.dto.model;
 
-public abstract class ReimburseemntDto {
+public abstract class ReimburseemntDto extends RepresentationModel<ReimbursementDto> {
     private Long id;
     private Date date;
     private String description;
