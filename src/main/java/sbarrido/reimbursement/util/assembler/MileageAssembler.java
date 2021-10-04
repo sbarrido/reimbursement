@@ -15,13 +15,15 @@ public class MileageAssembler {
 
         return dto;
     }
+    /*
     public Mileage toEntity(MileageDto dto) {
         Mileage mileage = new Mileage();
         mileage.setCost(dto.getCost());
         mileage.setDate(dto.getDate());
         mileage.setDesc(dto.getDesc());
-        mileage.setDest(destinationAssembler.toEntity(dto.getDest()));
+        
 
         return mileage;
     }
+    */
 }

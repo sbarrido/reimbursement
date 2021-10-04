@@ -1,6 +1,11 @@
 package sbarrido.reimbursement.dto.model;
 
-public abstract class ReimburseemntDto extends RepresentationModel<ReimbursementDto> {
+import org.springframework.hateoas.RepresentationModel;
+
+import java.util.Date;
+
+public abstract class ReimbursementDto extends RepresentationModel<ReimbursementDto> {
+    
     private Long id;
     private Date date;
     private String description;

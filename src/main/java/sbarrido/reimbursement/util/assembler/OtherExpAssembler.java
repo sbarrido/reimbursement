@@ -10,7 +10,7 @@ public class OtherExpAssembler {
     public OtherExpDto toDto(OtherExp otherExp) {
         OtherExpDto dto = new OtherExpDto();
         dto.setDate(otherExp.getDate());
-        dto.setDesc(otherExp.getDesc());
+        dto.setDescription(otherExp.getDesc());
         dto.setCost(otherExp.getCost());
         dto.setVendor(otherExp.getVendor());
         dto.setReceiptPath(otherExp.getImgPath());
