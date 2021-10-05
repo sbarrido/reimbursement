@@ -27,7 +27,7 @@ public class DestinationAssembler extends RepresentationModelAssemblerSupport<De
                             .getDestinationByLocation(entity.getDest()))
                             .withSelfRel();
         dto.add(selfLink);
-        
+
         return dto;
     }
 }

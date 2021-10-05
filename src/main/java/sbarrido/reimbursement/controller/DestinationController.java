@@ -23,14 +23,14 @@ public class DestinationController {
     @Autowired
     private DestinationAssembler destinationAssembler;
 
-    @GetMapping(value = "/{location}", produces = "application/hal+json")
+    @GetMapping(value = "/destinations/{location}", produces = "application/hal+json")
     public DestinationDto getDestinationByLocation(@PathVariable String location) {
         Destination destination = destinationService.getDestination(location);
         
         return destinationAssembler.toModel(destination);
     }
 
-    @GetMapping(value = "", produces = "application/hal+json")
+    @GetMapping(value = "/destinations", produces = "application/hal+json")
     public CollectionModel<DestinationDto> getAllDestination() {
         Set<Destination> destinationList = destinationService.getAllDestination();
 
