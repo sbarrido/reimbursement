@@ -1,17 +1,16 @@
-package sbarrido.reimbursement.dto.assembler;
+package sbarrido.reimbursement.util.assembler;
 
 
 import sbarrido.reimbursement.controller.DestinationController;
-import sbarrido.reimbursement.dto.model.DestinationDto;
 import sbarrido.reimbursement.model.destination.Destination;
+import sbarrido.reimbursement.dto.model.DestinationDto;
 
-import org.springframework.hateoas.CollectionModel;
-import org.springframework.hateoas.server.RepresentationModelAssemblerSupport;
+import org.springframework.hateoas.server.mvc.RepresentationModelAssemblerSupport;
 import org.springframework.hateoas.Link;
 
 import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.*;
 
-public class DestinationAssembler extends RepresentationModelAssemblerSupport<Destination, DestinationDto>{ 
+public class DestinationAssembler extends RepresentationModelAssemblerSupport<Destination, DestinationDto> { 
 
     public DestinationAssembler() {
         super(DestinationController.class, DestinationDto.class);
