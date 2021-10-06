@@ -1,6 +1,5 @@
 package sbarrido.reimbursement.dto.model;
 
-import java.util.Date;
 
 public class OtherExpDto extends ReimbursementDto { 
     private String vendor;

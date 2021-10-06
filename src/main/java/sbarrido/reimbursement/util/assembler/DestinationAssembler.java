@@ -10,6 +10,10 @@ import org.springframework.hateoas.Link;
 
 import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.*;
 
+import javax.annotation.ManagedBean;
+
+
+@ManagedBean
 public class DestinationAssembler extends RepresentationModelAssemblerSupport<Destination, DestinationDto> { 
 
     public DestinationAssembler() {
