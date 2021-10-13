@@ -1,6 +1,5 @@
 package sbarrido.reimbursement.dto.model;
 
-import java.util.Date;
 
 public class MileageDto extends ReimbursementDto { 
     private DestinationDto destDto;

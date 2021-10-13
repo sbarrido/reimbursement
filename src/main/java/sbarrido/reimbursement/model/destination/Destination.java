@@ -19,6 +19,9 @@ public class Destination {
         setDist(dist);
     }
 
+    public void setId(Long id) {
+        this.id = id;
+    }
     public void setDest(String loc) {
         this.location = loc;
     }
