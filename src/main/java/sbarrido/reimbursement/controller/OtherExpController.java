@@ -1,12 +1,15 @@
 package sbarrido.reimbursement.controller;
 
 
-import java.util.Set;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.hateoas.CollectionModel;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import sbarrido.reimbursement.dto.model.OtherExpDto;
@@ -31,7 +34,14 @@ public class OtherExpController {
    }
    @GetMapping(value = "/other_expenses", produces = "application/hal+json")
    public CollectionModel<OtherExpDto> getAllOtherExp() {
-       Set<OtherExp> otherExpList = otherExpService.getAllOtherExp();
+       List<OtherExp> otherExpList = otherExpService.getAllOtherExp();
+
+       return otherExpAssembler.toCollectionModel(otherExpList);
+   }
+   @GetMapping(value = "/other_expenses/date", produces = "application/hal+json")
+   public CollectionModel<OtherExpDto> getAllOtherExp(@RequestParam("date") String stringDate) {
+       LocalDate localDate = LocalDate.parse(stringDate, DateTimeFormatter.ISO_LOCAL_DATE);
+       List<OtherExp> otherExpList = otherExpService.getOtherExpByDate(localDate);
 
        return otherExpAssembler.toCollectionModel(otherExpList);
    }

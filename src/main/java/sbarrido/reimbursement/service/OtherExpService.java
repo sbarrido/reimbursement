@@ -5,8 +5,8 @@ import org.springframework.stereotype.Service;
 import sbarrido.reimbursement.repository.expense.OtherExpRepository;
 import sbarrido.reimbursement.model.expense.OtherExp;
 
-import java.util.Set;
-import java.util.HashSet;
+import java.time.LocalDate;
+import java.util.List;
 
 @Service
 public class OtherExpService {
@@ -16,8 +16,8 @@ public class OtherExpService {
         this.oRepository = repo;
     }
 
-    public Set<OtherExp> getAllOtherExp() {
-        Set<OtherExp> target = (HashSet<OtherExp>) oRepository.findAll();
+    public List<OtherExp> getAllOtherExp() {
+       List<OtherExp> target = (List<OtherExp>) oRepository.findAll();
 
         return target;
     }
@@ -29,6 +29,14 @@ public class OtherExpService {
     public OtherExp getOtherExp(OtherExp otherExp) {
         OtherExp target = getOtherExp(otherExp.getId());
 
+        return target;
+    }
+    public List<OtherExp> getOtherExpByDate(LocalDate localDate) {
+        int month = localDate.getMonthValue();
+        int year = localDate.getYear();
+
+        List<OtherExp> target = oRepository.findByYearAndMonth(year, month);
+        
         return target;
     }
     public OtherExp createOtherExp(OtherExp otherExp) {

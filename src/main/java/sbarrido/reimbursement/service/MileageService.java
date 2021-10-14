@@ -6,8 +6,8 @@ import org.springframework.stereotype.Service;
 import sbarrido.reimbursement.repository.expense.MileageRepository;
 import sbarrido.reimbursement.model.expense.Mileage;
 
-import java.util.Set;
-import java.util.HashSet;
+import java.time.LocalDate;
+import java.util.List;
 
 @Service
 public class MileageService {
@@ -17,8 +17,8 @@ public class MileageService {
         this.mRepository = repo;
     }
     
-    public Set<Mileage> getAllMileage() {
-        Set<Mileage> target = (HashSet<Mileage>) mRepository.findAll();
+    public List<Mileage> getAllMileage() {
+        List<Mileage> target = (List<Mileage>) mRepository.findAll();
 
         return target;
     }
@@ -29,6 +29,14 @@ public class MileageService {
     }
     public Mileage getMileage(Mileage mileage) {
         Mileage target = getMileage(mileage.getId());
+
+        return target;
+    }
+    public List<Mileage> getMileageByDate(LocalDate localDate) {
+        int month = localDate.getMonthValue();
+        int year = localDate.getYear();
+
+        List<Mileage> target = mRepository.findByYearAndMonth(year, month);
 
         return target;
     }

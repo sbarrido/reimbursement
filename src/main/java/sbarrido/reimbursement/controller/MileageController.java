@@ -1,11 +1,14 @@
 package sbarrido.reimbursement.controller;
 
-import java.util.Set;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.hateoas.CollectionModel;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import sbarrido.reimbursement.dto.model.MileageDto;
@@ -28,10 +31,16 @@ public class MileageController {
 
         return mileageAssembler.toModel(mileage);
     }
-
     @GetMapping(value = "/mileages", produces = "application/hal+json")
     public CollectionModel<MileageDto> getAllMileage() {
-        Set<Mileage> mileageList = mileageService.getAllMileage();
+        List<Mileage> mileageList = mileageService.getAllMileage();
+
+        return mileageAssembler.toCollectionModel(mileageList);
+    }
+    @GetMapping(value = "/mileages/date", produces = "application/hal+json")
+    public CollectionModel<MileageDto> getAllMileage(@RequestParam("date") String stringDate) {
+        LocalDate localDate = LocalDate.parse(stringDate, DateTimeFormatter.ISO_LOCAL_DATE);
+        List<Mileage> mileageList = mileageService.getMileageByDate(localDate);
 
         return mileageAssembler.toCollectionModel(mileageList);
     }
