@@ -22,8 +22,13 @@ public class MileageService {
 
         return target;
     }
+    public Mileage getMileage(Long id) {
+        Mileage target = mRepository.findById(id).get();
+
+        return target;
+    }
     public Mileage getMileage(Mileage mileage) {
-        Mileage target = mRepository.findById(mileage.getId()).get();
+        Mileage target = getMileage(mileage.getId());
 
         return target;
     }

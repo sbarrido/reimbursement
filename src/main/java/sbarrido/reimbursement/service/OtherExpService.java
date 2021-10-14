@@ -21,8 +21,13 @@ public class OtherExpService {
 
         return target;
     }
+    public OtherExp getOtherExp(Long id) {
+        OtherExp target = oRepository.findById(id).get();
+
+        return target;
+    }
     public OtherExp getOtherExp(OtherExp otherExp) {
-        OtherExp target = oRepository.findById(otherExp.getId()).get();
+        OtherExp target = getOtherExp(otherExp.getId());
 
         return target;
     }

@@ -1,20 +1,25 @@
 package sbarrido.reimbursement.util.assembler;
 
 import sbarrido.reimbursement.controller.MileageController;
+import sbarrido.reimbursement.dto.model.DestinationDto;
 import sbarrido.reimbursement.dto.model.MileageDto;
 import sbarrido.reimbursement.model.expense.Mileage;
+import sbarrido.reimbursement.model.destination.Destination;
 
 import org.springframework.hateoas.server.mvc.RepresentationModelAssemblerSupport;
 import org.springframework.hateoas.Link;
 
 import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.*;
 
-public class MileageAssembler extends RepresentationModelAssemblerSupport<Mileage, MileageDto> {
-    private DestinationAssembler destinationAssembler;
+import javax.annotation.ManagedBean;
 
-    public MileageAssembler(DestinationAssembler assembler) {
+import org.springframework.hateoas.CollectionModel;
+
+@ManagedBean
+public class MileageAssembler extends RepresentationModelAssemblerSupport<Mileage, MileageDto> {
+
+    public MileageAssembler() {
         super(MileageController.class, MileageDto.class);
-        this.destinationAssembler = assembler;
     }
 
     @Override
@@ -25,9 +30,35 @@ public class MileageAssembler extends RepresentationModelAssemblerSupport<Mileag
        dto.setId(entity.getId());
        dto.setCost(entity.getCost());
        dto.setDest(
-            destinationAssembler.toModel(entity.getDest())              
+            this.toDestModel(entity.getDest())             
        );
 
+       Link selfLink = linkTo(methodOn(MileageController.class)
+                            .getMileageById(entity.getId()))
+                            .withSelfRel();
+        dto.add(selfLink);
+
        return dto;
+    }
+
+    @Override
+    public CollectionModel<MileageDto> toCollectionModel(Iterable<? extends Mileage> entities) {
+        CollectionModel<MileageDto> dtos = super.toCollectionModel(entities);
+
+        dtos.add(
+            linkTo(methodOn(MileageController.class)
+            .getAllMileage())
+            .withSelfRel()
+        );
+
+        return dtos;
+    }
+    private DestinationDto toDestModel(Destination entity) {
+        DestinationDto dto = new DestinationDto();
+        dto.setId(entity.getId());
+        dto.setDest(entity.getDest());
+        dto.setDist(entity.getDist());
+
+        return dto;
     }
 }

@@ -44,6 +44,7 @@ public class DestinationAssembler extends RepresentationModelAssemblerSupport<De
                 .getAllDestination())
                 .withSelfRel()
         );
+        
         return dtos;
     }
 }
