@@ -7,8 +7,7 @@ import sbarrido.reimbursement.repository.user.UserRepository;
 import sbarrido.reimbursement.model.user.Role;
 import sbarrido.reimbursement.model.user.User;
 
-import java.util.HashSet;
-import java.util.Set;
+import java.util.ArrayList;
 
 @Service
 public class UserService {
@@ -18,16 +17,16 @@ public class UserService {
         this.uRepository = repo;
     }
 
-    public Set<User> getAllUser() {
-        Set<User> target = (HashSet<User>) uRepository.findAll();
+    public ArrayList<User> getAllUser() {
+        ArrayList<User> target = (ArrayList<User>) uRepository.findAll();
 
         return target;
     }
-    // public Set<User> getAllUserByRole(Role role) {
-    //     Set<User> target = uRepository.findByRole(role);
+    public ArrayList<User> getAllUserByRoles(Role role) {
+        ArrayList<User> target = uRepository.findByRoles(role);
 
-    //     return target;
-    // }
+        return target;
+    }
     public User getUser(User user) {
         User target = uRepository.findById(user.getId()).get();
 

@@ -1,6 +1,6 @@
 package sbarrido.reimbursement.controller;
 
-import java.util.Set;
+import java.util.ArrayList;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.hateoas.CollectionModel;
@@ -29,7 +29,7 @@ public class UserController {
     }
     @GetMapping(value = "/users", produces = "application/hal+json")
     public CollectionModel<UserDto> getAllUser() {
-        Set<User> userList = userService.getAllUser();
+        ArrayList<User> userList = userService.getAllUser();
 
         return userAssembler.toCollectionModel(userList);
     }

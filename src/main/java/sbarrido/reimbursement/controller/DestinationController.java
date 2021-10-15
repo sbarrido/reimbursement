@@ -12,7 +12,7 @@ import sbarrido.reimbursement.model.destination.Destination;
 import sbarrido.reimbursement.service.DestinationService;
 import sbarrido.reimbursement.util.assembler.DestinationAssembler;
 
-import java.util.Set;
+import java.util.ArrayList;
 
 @RestController
 public class DestinationController {
@@ -31,7 +31,7 @@ public class DestinationController {
     }
     @GetMapping(value = "/destinations", produces = "application/hal+json")
     public CollectionModel<DestinationDto> getAllDestination() {
-        Set<Destination> destinationList = destinationService.getAllDestination();
+        ArrayList<Destination> destinationList = destinationService.getAllDestination();
 
         return destinationAssembler.toCollectionModel(destinationList);
     }

@@ -7,8 +7,7 @@ import org.springframework.transaction.annotation.Transactional;
 import sbarrido.reimbursement.repository.destination.DestinationRepository;
 import sbarrido.reimbursement.model.destination.Destination;
 
-import java.util.Set;
-import java.util.HashSet;
+import java.util.ArrayList;
 
 @Service
 public class DestinationService {
@@ -18,8 +17,8 @@ public class DestinationService {
         this.dRepository = repo;
     }
 
-    public Set<Destination> getAllDestination() {
-        Set<Destination> target = (HashSet<Destination>) dRepository.findAll();
+    public ArrayList<Destination> getAllDestination() {
+        ArrayList<Destination> target = (ArrayList<Destination>) dRepository.findAll();
 
         return target;
     }

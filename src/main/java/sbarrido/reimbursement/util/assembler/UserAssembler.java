@@ -12,8 +12,12 @@ import org.springframework.hateoas.Link;
 import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.*;
 
 import java.util.Set;
+
+import javax.annotation.ManagedBean;
+
 import java.util.HashSet;
 
+@ManagedBean
 public class UserAssembler extends RepresentationModelAssemblerSupport<User, UserDto> { 
 
     public UserAssembler() {
