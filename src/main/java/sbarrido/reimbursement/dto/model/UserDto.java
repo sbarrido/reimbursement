@@ -2,19 +2,25 @@ package sbarrido.reimbursement.dto.model;
 
 import java.util.Set;
 
-public class UserGetDto {
+import org.springframework.hateoas.RepresentationModel;
+
+public class UserDto extends RepresentationModel<UserDto> {
 
     private Long id;
     private String username;
+    private String password;
     private Set<String> roles;
 
-    public UserGetDto() {}
+    public UserDto() {}
 
     public Long getId() {
         return this.id;
     }
     public String getUsername() {
         return this.username;
+    }
+    public String getPassword() {
+        return this.password;
     }
     public Set<String> getRoles() {
         return this.roles;
@@ -25,6 +31,9 @@ public class UserGetDto {
     }
     public void setUsername(String val) {
         this.username = val;
+    }
+    public void setPassword(String val) {
+        this.password = val;
     }
     public void setRoles(Set<String> vals) {
         this.roles = vals;

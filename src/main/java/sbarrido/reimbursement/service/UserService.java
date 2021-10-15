@@ -4,9 +4,11 @@ package sbarrido.reimbursement.service;
 import org.springframework.stereotype.Service;
 
 import sbarrido.reimbursement.repository.user.UserRepository;
+import sbarrido.reimbursement.model.user.Role;
 import sbarrido.reimbursement.model.user.User;
 
 import java.util.HashSet;
+import java.util.Set;
 
 @Service
 public class UserService {
@@ -16,11 +18,16 @@ public class UserService {
         this.uRepository = repo;
     }
 
-    public HashSet<User> getAllUser() {
-        HashSet<User> target = (HashSet<User>) uRepository.findAll();
+    public Set<User> getAllUser() {
+        Set<User> target = (HashSet<User>) uRepository.findAll();
 
         return target;
     }
+    // public Set<User> getAllUserByRole(Role role) {
+    //     Set<User> target = uRepository.findByRole(role);
+
+    //     return target;
+    // }
     public User getUser(User user) {
         User target = uRepository.findById(user.getId()).get();
 
@@ -31,14 +38,17 @@ public class UserService {
 
         return target;
     }
+    public User getUser(Long id) {
+        User target = uRepository.findById(id).get();
+
+        return target;
+    }
     public User createUser(User user) {
-        /**
         User target = null;
         if(!uRepository.existsById(user.getId())) {
             target = uRepository.save(user);
         }
-        **/
-        User target = uRepository.save(user);
+
         return target;
     }
     public User updateUser(User user) {

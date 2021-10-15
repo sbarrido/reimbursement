@@ -29,7 +29,6 @@ public class DestinationController {
         
         return destinationAssembler.toModel(destination);
     }
-
     @GetMapping(value = "/destinations", produces = "application/hal+json")
     public CollectionModel<DestinationDto> getAllDestination() {
         Set<Destination> destinationList = destinationService.getAllDestination();
