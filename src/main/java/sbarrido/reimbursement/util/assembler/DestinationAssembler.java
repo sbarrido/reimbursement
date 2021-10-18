@@ -47,4 +47,12 @@ public class DestinationAssembler extends RepresentationModelAssemblerSupport<De
         
         return dtos;
     }
+    public Destination toEntity(DestinationDto dto) {
+        Destination target = new Destination();
+        target.setId(dto.getId());
+        target.setDestination(dto.getDestination());
+        target.setDistance(dto.getDistance());
+
+        return target;
+    }
 }

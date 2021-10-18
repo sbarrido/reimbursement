@@ -11,11 +11,10 @@ import org.springframework.hateoas.Link;
 
 import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.*;
 
-import java.util.Set;
-
 import javax.annotation.ManagedBean;
 
-import java.util.HashSet;
+import java.util.ArrayList;
+import java.util.List;
 
 @ManagedBean
 public class UserAssembler extends RepresentationModelAssemblerSupport<User, UserDto> { 
@@ -51,9 +50,18 @@ public class UserAssembler extends RepresentationModelAssemblerSupport<User, Use
 
         return dtos;
     }
-    private Set<String> toStringRoles(Set<Role> set) {
-        Set<String> target = new HashSet<String>();
-        for(Role role : set) {
+    public User toEntity(UserDto dto) {
+        User target = new User();
+        target.setId(dto.getId());
+        target.setUsername(dto.getUsername());
+        target.setPassword(dto.getPassword());
+        
+        
+        return target;
+    }
+    private List<String> toStringRoles(List<Role> list) {
+        List<String> target = new ArrayList<String>();
+        for(Role role : list) {
             target.add(role.getRole());
         }
         return target;

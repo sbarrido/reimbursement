@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.hateoas.CollectionModel;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -24,21 +25,31 @@ public class UserController {
     @Autowired
     private UserAssembler userAssembler;
 
-    @GetMapping(value = "/users/{id}", produces = "application/hal+json")
+    @GetMapping(value = "/users/{id}", produces = "application/json")
     public UserDto getUserById(@PathVariable Long id) {
         User user = userService.getUser(id);
 
         return userAssembler.toModel(user);
     }
-    @GetMapping(value = "/users", produces = "application/hal+json")
+    @GetMapping(value = "/users", produces = "application/json")
     public CollectionModel<UserDto> getAllUser() {
         ArrayList<User> userList = userService.getAllUser();
 
         return userAssembler.toCollectionModel(userList);
     }
 
-    @PostMapping(path = "/users", consumes = "application/hal+json")
-    public void create(@RequestBody User user) {
-        userService.createUser(user);
+    @PostMapping(path = "/users", consumes = "application/json")
+    public User create(@RequestBody UserDto userDTO) {
+        User target = userAssembler.toEntity(userDTO);
+        userService.createUser(target);
+
+        return target;
+    }
+    @DeleteMapping(value = "/users/{id}")
+    public User delete(@PathVariable Long id) {
+        User target = userService.getUser(id);
+        userService.deleteUser(target);
+
+        return target;
     }
 }

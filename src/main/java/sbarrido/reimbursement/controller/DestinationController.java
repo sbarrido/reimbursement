@@ -26,25 +26,30 @@ public class DestinationController {
     @Autowired
     private DestinationAssembler destinationAssembler;
 
-    @GetMapping(value = "/destinations/{location}", produces = "application/hal+json")
+    @GetMapping(value = "/destinations/{location}", produces = "application/json")
     public DestinationDto getDestinationByLocation(@PathVariable String location) {
         Destination destination = destinationService.getDestination(location);
         
         return destinationAssembler.toModel(destination);
     }
-    @GetMapping(value = "/destinations", produces = "application/hal+json")
+    @GetMapping(value = "/destinations", produces = "application/json")
     public CollectionModel<DestinationDto> getAllDestination() {
         ArrayList<Destination> destinationList = destinationService.getAllDestination();
 
         return destinationAssembler.toCollectionModel(destinationList);
     }
     @PostMapping(value = "/destinations", consumes = "application/json") 
-    public void create(@RequestBody Destination destination) {
-        destinationService.createDestination(destination);
+    public Destination create(@RequestBody DestinationDto destinationDTO) {
+        Destination target = destinationAssembler.toEntity(destinationDTO);
+        destinationService.createDestination(target);
+        
+        return target;
     }
     @DeleteMapping(value= "/destinations/{location}")
-    public void delete(@PathVariable String location) {
+    public Destination delete(@PathVariable String location) {
         Destination target = destinationService.getDestination(location);
         destinationService.deleteDestination(target);
+        
+        return target;
     }
 }

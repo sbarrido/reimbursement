@@ -53,6 +53,16 @@ public class MileageAssembler extends RepresentationModelAssemblerSupport<Mileag
 
         return dtos;
     }
+    public Mileage toEntity(MileageDto dto) {
+        Mileage target = new Mileage();
+        target.setId(dto.getId());
+        target.setDate(dto.getDate());
+        target.setDesc(dto.getDesc());
+        target.setCost(dto.getCost());
+        target.setDestination(this.toDest(dto.getDestination()));
+
+        return target;
+    }
     private DestinationDto toDestModel(Destination entity) {
         DestinationDto dto = new DestinationDto();
         dto.setId(entity.getId());
@@ -60,5 +70,13 @@ public class MileageAssembler extends RepresentationModelAssemblerSupport<Mileag
         dto.setDistance(entity.getDistance());
 
         return dto;
+    }
+    private Destination toDest(DestinationDto dto) {
+        Destination target = new Destination();
+        target.setId(dto.getId());
+        target.setDestination(dto.getDestination());
+        target.setDistance(dto.getDistance());
+
+        return target;
     }
 }

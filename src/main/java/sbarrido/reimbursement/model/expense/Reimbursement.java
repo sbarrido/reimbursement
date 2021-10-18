@@ -40,6 +40,9 @@ public abstract class Reimbursement {
         return this.description;
     }
 
+    public void setId(Long id) {
+        this.id = id;
+    }
     public void setDate(Date d) {
         this.date = d;
     }

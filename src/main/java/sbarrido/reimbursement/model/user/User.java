@@ -1,6 +1,7 @@
 package sbarrido.reimbursement.model.user;
 
-import java.util.Set;
+import java.util.List;
+
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -15,7 +16,7 @@ public class User {
     private String username;
     private String password;
     @OneToMany
-    private Set<Role> roles;
+    private List<Role> roles;
 
     public User() {}
 
@@ -33,17 +34,20 @@ public class User {
     public String getPassword() {
         return this.password;
     }
-    public Set<Role> getRoles() {
+    public List<Role> getRoles() {
         return this.roles;
     }
 
+    public void setId(Long id) {
+        this.id = id;
+    }
     public void setUsername(String val) {
         this.username = val;
     }
     public void setPassword(String val) {
         this.password = val;
     }
-    public void setRoles(Set<Role> vals) {
+    public void setRoles(List<Role> vals) {
         this.roles = vals;
     }
 }

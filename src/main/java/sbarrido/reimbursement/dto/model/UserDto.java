@@ -1,6 +1,6 @@
 package sbarrido.reimbursement.dto.model;
 
-import java.util.Set;
+import java.util.List;
 
 import org.springframework.hateoas.RepresentationModel;
 
@@ -9,7 +9,7 @@ public class UserDto extends RepresentationModel<UserDto> {
     private Long id;
     private String username;
     private String password;
-    private Set<String> roles;
+    private List<String> roles;
 
     public UserDto() {}
 
@@ -22,7 +22,7 @@ public class UserDto extends RepresentationModel<UserDto> {
     public String getPassword() {
         return this.password;
     }
-    public Set<String> getRoles() {
+    public List<String> getRoles() {
         return this.roles;
     }
 
@@ -35,7 +35,7 @@ public class UserDto extends RepresentationModel<UserDto> {
     public void setPassword(String val) {
         this.password = val;
     }
-    public void setRoles(Set<String> vals) {
+    public void setRoles(List<String> vals) {
         this.roles = vals;
     }
 }
