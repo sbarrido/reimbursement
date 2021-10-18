@@ -29,8 +29,8 @@ public class MileageAssembler extends RepresentationModelAssemblerSupport<Mileag
        dto.setDescription(entity.getDesc());
        dto.setId(entity.getId());
        dto.setCost(entity.getCost());
-       dto.setDest(
-            this.toDestModel(entity.getDest())             
+       dto.setDestination(
+            this.toDestModel(entity.getDestination())             
        );
 
        Link selfLink = linkTo(methodOn(MileageController.class)
@@ -56,8 +56,8 @@ public class MileageAssembler extends RepresentationModelAssemblerSupport<Mileag
     private DestinationDto toDestModel(Destination entity) {
         DestinationDto dto = new DestinationDto();
         dto.setId(entity.getId());
-        dto.setDest(entity.getDest());
-        dto.setDist(entity.getDist());
+        dto.setDestination(entity.getDestination());
+        dto.setDistance(entity.getDistance());
 
         return dto;
     }

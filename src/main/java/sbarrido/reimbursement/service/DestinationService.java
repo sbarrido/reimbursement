@@ -45,8 +45,8 @@ public class DestinationService {
         Destination target = null;
         if(dRepository.existsById(destination.getId())) {
             target = dRepository.findById(destination.getId()).get();
-            target.setDest(destination.getDest());
-            target.setDist(destination.getDist());
+            target.setDestination(destination.getDestination());
+            target.setDistance(destination.getDistance());
             
             dRepository.save(target);
         }

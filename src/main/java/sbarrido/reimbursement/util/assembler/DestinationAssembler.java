@@ -24,12 +24,12 @@ public class DestinationAssembler extends RepresentationModelAssemblerSupport<De
     @Override
     public DestinationDto toModel(Destination entity) {
         DestinationDto dto = instantiateModel(entity);
-        dto.setDest(entity.getDest());
-        dto.setDist(entity.getDist());
+        dto.setDestination(entity.getDestination());
+        dto.setDistance(entity.getDistance());
         dto.setId(entity.getId());
 
         Link selfLink = linkTo(methodOn(DestinationController.class)
-                            .getDestinationByLocation(entity.getDest()))
+                            .getDestinationByLocation(entity.getDestination()))
                             .withSelfRel();
         dto.add(selfLink);
 

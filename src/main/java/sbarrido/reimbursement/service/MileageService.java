@@ -54,7 +54,7 @@ public class MileageService {
             target = mRepository.findById(mileage.getId()).get();
             target.setDate(mileage.getDate());
             target.setDesc(mileage.getDesc());
-            target.setDest(mileage.getDest());
+            target.setDestination(mileage.getDestination());
             target.setCost(mileage.getCost());
 
             target = mRepository.save(target);
