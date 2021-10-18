@@ -55,9 +55,9 @@ public class MileageRepositoryTest {
         Mileage retrieved = mRepo.findById(testMileage.getId()).get();
         Mileage byName = mRepo.findByDestination(test);
 
-        assertThat(testMileage.getDest().getDest()).isEqualTo("Test");
-        assertThat(retrieved.getDest().getDest()).isEqualTo("Test");
-        assertThat(byName.getDest().getDest()).isEqualTo("Test");
+        assertThat(testMileage.getDestination().getDestination()).isEqualTo("Test");
+        assertThat(retrieved.getDestination().getDestination()).isEqualTo("Test");
+        assertThat(byName.getDestination().getDestination()).isEqualTo("Test");
 
         assertThat(testMileage.getId()).isEqualTo(retrieved.getId());
         assertThat(testMileage.getId()).isEqualTo(byName.getId());
@@ -76,8 +76,8 @@ public class MileageRepositoryTest {
         Mileage found = byDate.get(1);
 
         assertThat(byDate.size()).isEqualTo(2);
-        assertThat(found.getDest().getDest()).isEqualTo("Indianapolis");
-        assertThat(byName.getDest().getDest()).isEqualTo("Fort Wayne");
+        assertThat(found.getDestination().getDestination()).isEqualTo("Indianapolis");
+        assertThat(byName.getDestination().getDestination()).isEqualTo("Fort Wayne");
     }
 
     @Test

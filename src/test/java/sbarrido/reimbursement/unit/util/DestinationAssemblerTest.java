@@ -36,21 +36,21 @@ public class DestinationAssemblerTest {
         );
 
         entity = new Destination();
-        entity.setDest("Fort_Wayne");
-        entity.setDist(15.0);
+        entity.setDestination("Fort_Wayne");
+        entity.setDistance(15.0);
 
         dto = new DestinationDto();
         dto.setId(entity.getId());
-        dto.setDest(entity.getDest());
-        dto.setDist(entity.getDist());
+        dto.setDestination(entity.getDestination());
+        dto.setDistance(entity.getDistance());
     }
     @Test
     public void toModelTest() {
         DestinationDto target = dAssembler.toModel(entity);
 
         assertThat(target.getId()).isEqualTo(dto.getId());
-        assertThat(target.getDest()).isEqualTo(dto.getDest());
-        assertThat(target.getDist()).isEqualTo(dto.getDist());
+        assertThat(target.getDestination()).isEqualTo(dto.getDestination());
+        assertThat(target.getDistance()).isEqualTo(dto.getDistance());
 
         
         System.out.println(target);

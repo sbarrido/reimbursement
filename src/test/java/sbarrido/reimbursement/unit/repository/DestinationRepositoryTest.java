@@ -44,16 +44,16 @@ public class DestinationRepositoryTest {
         Destination retrieved = dRepo.findById(testDest.getId()).get();
         Destination byName = dRepo.findByLocation("Test");
 
-        assertThat(testDest.getDest()).isEqualTo("Test");
-        assertThat(retrieved.getDest()).isEqualTo("Test");
-        assertThat(byName.getDest()).isEqualTo("Test");
+        assertThat(testDest.getDestination()).isEqualTo("Test");
+        assertThat(retrieved.getDestination()).isEqualTo("Test");
+        assertThat(byName.getDestination()).isEqualTo("Test");
 
         assertThat(testDest.getId()).isEqualTo(retrieved.getId());
         assertThat(testDest.getId()).isEqualTo(byName.getId());
 
-        assertThat(testDest.getDist()).isEqualTo(2.0);
-        assertThat(retrieved.getDist()).isEqualTo(2.0);
-        assertThat(byName.getDist()).isEqualTo(2.0);
+        assertThat(testDest.getDistance()).isEqualTo(2.0);
+        assertThat(retrieved.getDistance()).isEqualTo(2.0);
+        assertThat(byName.getDistance()).isEqualTo(2.0);
     }
 
     @Test
@@ -61,9 +61,9 @@ public class DestinationRepositoryTest {
         Destination byName = dRepo.findByLocation("DefaultTest1");
 
         
-        assertThat(byName.getDest()).isEqualTo("DefaultTest1");
+        assertThat(byName.getDestination()).isEqualTo("DefaultTest1");
         assertThat(byName.getId()).isEqualTo(byName.getId());
-        assertThat(byName.getDist()).isEqualTo(1.0);
+        assertThat(byName.getDistance()).isEqualTo(1.0);
     }
 
     @Test
