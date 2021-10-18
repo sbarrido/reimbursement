@@ -37,7 +37,7 @@ public class UserController {
         return userAssembler.toCollectionModel(userList);
     }
 
-    @PostMapping(path = "/users", consumes = "applicaiton/hal+json")
+    @PostMapping(path = "/users", consumes = "application/hal+json")
     public void create(@RequestBody User user) {
         userService.createUser(user);
     }
