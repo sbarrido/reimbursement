@@ -6,11 +6,11 @@ public class MileageDto extends ReimbursementDto {
 
     public MileageDto() {}
 
-    public DestinationDto getDest() {
+    public DestinationDto getDestination() {
         return this.destDto;
     }
 
-    public void setDest(DestinationDto dto) {
+    public void setDestination(DestinationDto dto) {
         this.destDto = dto;
     }
 

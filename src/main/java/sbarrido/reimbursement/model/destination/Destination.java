@@ -15,27 +15,27 @@ public class Destination {
     public Destination() {}
     
     public Destination(String loc, double dist) {
-        setDest(loc);
-        setDist(dist);
+        setDestination(loc);
+        setDistance(dist);
     }
 
     public void setId(Long id) {
         this.id = id;
     }
-    public void setDest(String loc) {
+    public void setDestination(String loc) {
         this.location = loc;
     }
-    public void setDist(double dist) {
+    public void setDistance(double dist) {
         this.distance = dist;
     }
 
     public Long getId() {
         return this.id;
     }
-    public String getDest() {
+    public String getDestination() {
         return this.location;
     }
-    public double getDist() {
+    public double getDistance() {
         return this.distance;
     }
 }

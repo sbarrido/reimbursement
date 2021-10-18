@@ -12,20 +12,20 @@ public class DestinationDto extends RepresentationModel<DestinationDto> {
     public void setId(Long id) {
         this.id = id;
     }
-    public void setDest(String loc) {
+    public void setDestination(String loc) {
         this.location = loc;
     }
-    public void setDist(double dist) {
+    public void setDistance(double dist) {
         this.distance = dist;
     }
 
     public Long getId() {
         return this.id;
     }
-    public String getDest() {
+    public String getDestination() {
         return this.location;
     }
-    public double getDist() {
+    public double getDistance() {
         return this.distance;
     }
 }

@@ -21,17 +21,17 @@ public class Mileage extends Reimbursement {
     public Mileage(Date date, String description, Destination destination) {
         setDate(date);
         setDesc(description);
-        setDest(destination);
-        setCost(destination.getDist());
+        setDestination(destination);
+        setCost(destination.getDistance());
     }
     
     public void setCost(double val) {
         this.cost = (val - Mileage._COMMUTE) * Mileage._RATE;
     }
-    public void setDest(Destination loc) {
+    public void setDestination(Destination loc) {
         this.destination = loc;
     }
-    public Destination getDest() {
+    public Destination getDestination() {
         return this.destination;
     }
 }
