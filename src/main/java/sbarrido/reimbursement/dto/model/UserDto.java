@@ -4,12 +4,14 @@ import java.util.List;
 
 import org.springframework.hateoas.RepresentationModel;
 
+import sbarrido.reimbursement.model.user.UserRoles;
+
 public class UserDto extends RepresentationModel<UserDto> {
 
     private Long id;
     private String username;
     private String password;
-    private List<String> roles;
+    private List<Enum<UserRoles>> roles;
 
     public UserDto() {}
 
@@ -22,7 +24,7 @@ public class UserDto extends RepresentationModel<UserDto> {
     public String getPassword() {
         return this.password;
     }
-    public List<String> getRoles() {
+    public List<Enum<UserRoles>> getRoles() {
         return this.roles;
     }
 
@@ -35,7 +37,7 @@ public class UserDto extends RepresentationModel<UserDto> {
     public void setPassword(String val) {
         this.password = val;
     }
-    public void setRoles(List<String> vals) {
+    public void setRoles(List<Enum<UserRoles>> vals) {
         this.roles = vals;
     }
 }

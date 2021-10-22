@@ -1,6 +1,7 @@
 package sbarrido.reimbursement.util.assembler;
 
 import sbarrido.reimbursement.model.user.User;
+import sbarrido.reimbursement.model.user.UserRoles;
 import sbarrido.reimbursement.dto.model.UserDto;
 import sbarrido.reimbursement.model.user.Role;
 import sbarrido.reimbursement.controller.UserController;
@@ -29,7 +30,7 @@ public class UserAssembler extends RepresentationModelAssemblerSupport<User, Use
         dto.setId(entity.getId());
         dto.setUsername(entity.getUsername());
         dto.setPassword(entity.getPassword());
-        dto.setRoles(toStringRoles(entity.getRoles()));
+        dto.setRoles(toRoles(entity.getRoles()));
 
         Link selfLink = linkTo(methodOn(UserController.class)
                             .getUserById(entity.getId()))
@@ -59,8 +60,8 @@ public class UserAssembler extends RepresentationModelAssemblerSupport<User, Use
         
         return target;
     }
-    private List<String> toStringRoles(List<Role> list) {
-        List<String> target = new ArrayList<String>();
+    private List<Enum<UserRoles>> toRoles(List<Role> list) {
+        List<Enum<UserRoles>> target = new ArrayList<>();
         for(Role role : list) {
             target.add(role.getRole());
         }
