@@ -4,7 +4,6 @@ import org.springframework.data.repository.CrudRepository;
 import sbarrido.reimbursement.model.user.Role;
 
 
-public interface RoleRepository extends CrudRepository<Role, String> {
+public interface RoleRepository extends CrudRepository<Role, Long> {
     
-    Role findByRole(String role);
 }

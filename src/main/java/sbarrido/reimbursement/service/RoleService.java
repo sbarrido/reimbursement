@@ -25,6 +25,11 @@ public class RoleService {
         
         return target;
     }
+    public Role getRole(Long id) {
+        Role target = rRepo.findById(id).get();
+        
+        return target;
+    }
     public Role createRole(Role role) {
         Role target = null;
         if(!rRepo.existsById(role.getId())) {

@@ -10,17 +10,20 @@ import javax.persistence.Id;
 public class Role { 
     @Id
     @GeneratedValue
-    private String id;
+    private Long id;
     @Enumerated(EnumType.ORDINAL)
     private UserRoles role;
 
     public Role() {}
 
-    public String getId() {
+    public Long getId() {
         return this.id;
     }
     public UserRoles getRole() {
         return this.role;
+    }
+    public void setId(Long id) {
+        this.id = id;
     }
     public void setRole(UserRoles val) {
         this.role = val;

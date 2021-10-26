@@ -2,6 +2,7 @@ package sbarrido.reimbursement.util.assembler;
 
 import sbarrido.reimbursement.model.user.User;
 import sbarrido.reimbursement.model.user.UserRoles;
+import sbarrido.reimbursement.dto.model.RoleDto;
 import sbarrido.reimbursement.dto.model.UserDto;
 import sbarrido.reimbursement.model.user.Role;
 import sbarrido.reimbursement.controller.UserController;
@@ -56,15 +57,34 @@ public class UserAssembler extends RepresentationModelAssemblerSupport<User, Use
         target.setId(dto.getId());
         target.setUsername(dto.getUsername());
         target.setPassword(dto.getPassword());
-        
+
+        List<Role> listRole = new ArrayList<>();
+        for(RoleDto roleDto : dto.getRoles()) {
+            listRole.add(toRoleEntity(roleDto));
+        }
+        target.setRoles(listRole);
         
         return target;
     }
-    private List<Enum<UserRoles>> toRoles(List<Role> list) {
-        List<Enum<UserRoles>> target = new ArrayList<>();
+    private List<RoleDto> toRoles(List<Role> list) {
+        List<RoleDto> target = new ArrayList<>();
         for(Role role : list) {
-            target.add(role.getRole());
+           target.add(toRoleModel(role));
         }
+        return target;
+    }
+    private RoleDto toRoleModel(Role entity) {
+        RoleDto dto = new RoleDto();
+        dto.setId(entity.getId());
+        dto.setRole(entity.getRole());
+
+        return dto;
+    }
+    private Role toRoleEntity(RoleDto dto) {
+        Role target = new Role();
+        target.setId(dto.getId());
+        target.setRole(dto.getRole());
+
         return target;
     }
 }

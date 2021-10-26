@@ -37,7 +37,6 @@ public class UserController {
 
         return userAssembler.toCollectionModel(userList);
     }
-
     @PostMapping(path = "/users", consumes = "application/json")
     public User create(@RequestBody UserDto userDTO) {
         User target = userAssembler.toEntity(userDTO);
