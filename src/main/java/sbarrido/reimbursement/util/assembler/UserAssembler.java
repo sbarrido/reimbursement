@@ -1,7 +1,6 @@
 package sbarrido.reimbursement.util.assembler;
 
 import sbarrido.reimbursement.model.user.User;
-import sbarrido.reimbursement.model.user.UserRoles;
 import sbarrido.reimbursement.dto.model.RoleDto;
 import sbarrido.reimbursement.dto.model.UserDto;
 import sbarrido.reimbursement.model.user.Role;

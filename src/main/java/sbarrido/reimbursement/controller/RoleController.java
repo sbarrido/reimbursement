@@ -39,15 +39,14 @@ public class RoleController {
     @PostMapping(path = "/roles", consumes = "application/json")
     public Role create(@RequestBody RoleDto roleDTO) {
         Role target = roleAssembler.toEntity(roleDTO);
-        roleService.createRole(target);
+        target = roleService.createRole(target);
 
         return target;
     }
     @DeleteMapping(value = "/roles/{id}")
-    public Role delete(@PathVariable Long id) {
+    public void delete(@PathVariable Long id) {
         Role target = roleService.getRole(id);
         roleService.deleteRole(target);
 
-        return target;
     }
 }

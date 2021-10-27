@@ -41,15 +41,13 @@ public class DestinationController {
     @PostMapping(value = "/destinations", consumes = "application/json") 
     public Destination create(@RequestBody DestinationDto destinationDTO) {
         Destination target = destinationAssembler.toEntity(destinationDTO);
-        destinationService.createDestination(target);
+        target = destinationService.createDestination(target);
         
         return target;
     }
     @DeleteMapping(value= "/destinations/{location}")
-    public Destination delete(@PathVariable String location) {
+    public void delete(@PathVariable String location) {
         Destination target = destinationService.getDestination(location);
         destinationService.deleteDestination(target);
-        
-        return target;
     }
 }

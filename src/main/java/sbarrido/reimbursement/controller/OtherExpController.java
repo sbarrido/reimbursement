@@ -51,15 +51,13 @@ public class OtherExpController {
    @PostMapping(value = "/other_expenses", produces = "appliaction/json") 
    public OtherExp create(@RequestBody OtherExpDto otherExpDTO) {
        OtherExp target = otherExpAssembler.toEntity(otherExpDTO);
-       otherExpService.createOtherExp(target);
+       target = otherExpService.createOtherExp(target);
 
        return target;
    }
    @DeleteMapping(value = "/other_expenses/{id}")
-   public OtherExp delete(@PathVariable Long id) {
+   public void delete(@PathVariable Long id) {
        OtherExp target = otherExpService.getOtherExp(id);
        otherExpService.deleteOtherExp(target);
-
-       return target;
    }
 }

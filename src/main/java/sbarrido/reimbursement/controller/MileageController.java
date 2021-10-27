@@ -50,15 +50,13 @@ public class MileageController {
     @PostMapping(value = "/mileages", produces = "application/json")
     public Mileage create(@RequestBody MileageDto mileageDTO) {
         Mileage target = mileageAssembler.toEntity(mileageDTO);
-        mileageService.createMileage(target);
+        target = mileageService.createMileage(target);
 
         return target;
     }
     @DeleteMapping(value = "/mileages/{id}")
-    public Mileage delete(@PathVariable Long id) {
+    public void delete(@PathVariable Long id) {
         Mileage target = mileageService.getMileage(id);
         mileageService.deleteMileage(target);
-
-        return target;
     }
 }
