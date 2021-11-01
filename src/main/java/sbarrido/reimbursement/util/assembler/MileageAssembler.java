@@ -4,6 +4,7 @@ import sbarrido.reimbursement.controller.MileageController;
 import sbarrido.reimbursement.dto.model.DestinationDto;
 import sbarrido.reimbursement.dto.model.MileageDto;
 import sbarrido.reimbursement.model.expense.Mileage;
+import sbarrido.reimbursement.service.DestinationService;
 import sbarrido.reimbursement.model.destination.Destination;
 
 import org.springframework.hateoas.server.mvc.RepresentationModelAssemblerSupport;
@@ -13,11 +14,15 @@ import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.*;
 
 import javax.annotation.ManagedBean;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.hateoas.CollectionModel;
 
 @ManagedBean
 public class MileageAssembler extends RepresentationModelAssemblerSupport<Mileage, MileageDto> {
 
+    @Autowired
+    DestinationService dService;
+    
     public MileageAssembler() {
         super(MileageController.class, MileageDto.class);
     }
@@ -72,10 +77,7 @@ public class MileageAssembler extends RepresentationModelAssemblerSupport<Mileag
         return dto;
     }
     private Destination toDest(DestinationDto dto) {
-        Destination target = new Destination();
-        target.setId(dto.getId());
-        target.setDestination(dto.getDestination());
-        target.setDistance(dto.getDistance());
+        Destination target = dService.getDestination(dto.getDestination());
 
         return target;
     }

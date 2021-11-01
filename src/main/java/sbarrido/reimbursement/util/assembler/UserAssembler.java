@@ -1,12 +1,14 @@
 package sbarrido.reimbursement.util.assembler;
 
 import sbarrido.reimbursement.model.user.User;
+import sbarrido.reimbursement.service.RoleService;
 import sbarrido.reimbursement.dto.model.RoleDto;
 import sbarrido.reimbursement.dto.model.UserDto;
 import sbarrido.reimbursement.model.user.Role;
 import sbarrido.reimbursement.controller.UserController;
 
 import org.springframework.hateoas.server.mvc.RepresentationModelAssemblerSupport;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.hateoas.CollectionModel;
 import org.springframework.hateoas.Link;
 
@@ -19,6 +21,9 @@ import java.util.List;
 
 @ManagedBean
 public class UserAssembler extends RepresentationModelAssemblerSupport<User, UserDto> { 
+
+    @Autowired
+    RoleService rService;
 
     public UserAssembler() {
         super(UserController.class, UserDto.class);
@@ -80,9 +85,7 @@ public class UserAssembler extends RepresentationModelAssemblerSupport<User, Use
         return dto;
     }
     private Role toRoleEntity(RoleDto dto) {
-        Role target = new Role();
-        target.setId(dto.getId());
-        target.setRole(dto.getRole());
+        Role target = rService.getRole(dto.getId());
 
         return target;
     }
