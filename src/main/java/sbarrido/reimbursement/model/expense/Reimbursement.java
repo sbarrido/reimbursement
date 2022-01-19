@@ -25,7 +25,9 @@ public abstract class Reimbursement {
     private Date date;
     private String description;
 
-    public abstract void setCost(double val);
+    public void setCost(double val) {
+        this.cost = val;
+    }
 
     public Long getId() {
         return this.id;

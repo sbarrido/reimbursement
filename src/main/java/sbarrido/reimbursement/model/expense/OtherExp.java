@@ -20,9 +20,6 @@ public class OtherExp extends Reimbursement {
         setCost(cost);
     }
 
-    public void setCost(double val) {
-        this.cost = val;
-    }
     public void setVendor(String s) {
         this.vendor = s;
     }

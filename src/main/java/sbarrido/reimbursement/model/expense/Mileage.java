@@ -24,9 +24,11 @@ public class Mileage extends Reimbursement {
         setDestination(destination);
         setCost(destination.getDistance());
     }
-    
-    public void setCost(double val) {
-        this.cost = (val - Mileage._COMMUTE) * Mileage._RATE;
+
+    public double calculate() {
+        double val = (this.cost - Mileage._COMMUTE) * Mileage._RATE;
+
+        return val;
     }
     public void setDestination(Destination loc) {
         this.destination = loc;
