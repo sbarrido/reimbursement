@@ -2,11 +2,26 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
+import Destination from './routes/destination';
+import Mileage from './routes/mileage';
+import OtherExp from './routes/otherExp';
 import reportWebVitals from './reportWebVitals';
+import { 
+  BrowserRouter,
+  Routes,
+  Route
+} from 'react-router-dom';
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<App />} />
+          <Route path="/destination" element={<Destination />} />
+          <Route path="/mileage" element={<Mileage />} />
+          <Route path="/otherExp" element={<OtherExp />} />
+      </Routes>
+    </BrowserRouter>
   </React.StrictMode>,
   document.getElementById('root')
 );

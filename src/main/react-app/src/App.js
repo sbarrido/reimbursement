@@ -1,14 +1,20 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
+import { Outlet, Link } from 'react-router-dom';
 
 class App extends Component {
   render() {
     return (
-      <div classname="App">
+      <div>
         <img src={logo} className="App-logo" alt="logo" />
         <h1>Hello World!</h1>
+        <nav>
+          <Link to="/destination">Destinations</Link> | {" "}
+          <Link to="/mileage">Mileages</Link>
+        </nav>
         <p>Created first React App</p>
+        <Outlet />
       </div>
     );
   }
