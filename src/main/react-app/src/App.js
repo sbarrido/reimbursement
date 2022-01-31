@@ -10,8 +10,8 @@ class App extends Component {
         <img src={logo} className="App-logo" alt="logo" />
         <h1>Hello World!</h1>
         <nav>
-          <Link to="/destination">Destinations</Link> | {" "}
-          <Link to="/mileage">Mileages</Link>
+          <Link to="/destinations">Destinations</Link> | {" "}
+          <Link to="/mileages">Mileages</Link>
         </nav>
         <p>Created first React App</p>
         <Outlet />

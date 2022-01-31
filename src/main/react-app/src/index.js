@@ -17,9 +17,9 @@ ReactDOM.render(
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<App />} />
-          <Route path="/destination" element={<Destination />} />
-          <Route path="/mileage" element={<Mileage />} />
-          <Route path="/otherExp" element={<OtherExp />} />
+          <Route path="/destinations" element={<Destination />} />
+          <Route path="/mileages" element={<Mileage />} />
+          <Route path="/otherExps" element={<OtherExp />} />
       </Routes>
     </BrowserRouter>
   </React.StrictMode>,
