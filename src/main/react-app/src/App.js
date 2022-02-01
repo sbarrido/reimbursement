@@ -11,7 +11,8 @@ class App extends Component {
         <h1>Hello World!</h1>
         <nav>
           <Link to="/destinations">Destinations</Link> | {" "}
-          <Link to="/mileages">Mileages</Link>
+          <Link to="/mileages">Mileages</Link> | {" "}
+          <Link to="/users">Users</Link>
         </nav>
         <p>Created first React App</p>
         <Outlet />

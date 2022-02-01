@@ -5,6 +5,7 @@ import App from './App';
 import Destination from './routes/destination';
 import Mileage from './routes/mileage';
 import OtherExp from './routes/otherExp';
+import User from './routes/UsersComponent';
 import reportWebVitals from './reportWebVitals';
 import { 
   BrowserRouter,
@@ -20,6 +21,7 @@ ReactDOM.render(
           <Route path="/destinations" element={<Destination />} />
           <Route path="/mileages" element={<Mileage />} />
           <Route path="/otherExps" element={<OtherExp />} />
+          <Route path="/users" element={<User />} />
       </Routes>
     </BrowserRouter>
   </React.StrictMode>,
