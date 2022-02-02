@@ -1,4 +1,5 @@
 import React from 'react'
+import axios from 'axios';
 
 class UsersComponent extends React.Component {
 
@@ -13,21 +14,16 @@ class UsersComponent extends React.Component {
 
     componentDidMount() {
         const url = 'http://localhost:8080/api/users';
-        fetch(url, {
-            method: 'GET',
-            mode: 'no-cors',
-            headers: {
-                'Content-Type': 'application/json',
-                'Accept': 'application/json'
-            }
-        })
-        .then(data => {
-            // this.setState({
-            //     userDTOs: data,
-            //     isLoaded: true
-            // })
-            console.log(data);
-        });
+        axios
+            .get(url)
+            .then(({ data }) => {
+                this.setState({
+                    userDTOs: data._embedded.userDtoList,
+                    isLoaded: true
+                })
+            })
+            .catch((err) => {})
+
     }
 
     render() {
@@ -36,15 +32,14 @@ class UsersComponent extends React.Component {
         if(!isLoaded) {
             return (
                 <h1>Loading...</h1>
-
             )
         }
         return(
             <div>
                 <h1> LOADED! </h1>
-                {numbers.map(number => {
+                {userDTOs.map((user) => {
                     return(
-                        <li key={number}>{number}</li>
+                        <li key={user.id}>{user.username}</li>
                     )
                 })}
             </div>
