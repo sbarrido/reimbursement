@@ -1,21 +1,32 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
-import { Outlet, Link } from 'react-router-dom';
+import { Outlet } from 'react-router-dom';
+import {
+  Container,
+  Col,
+  Row
+} from 'reactstrap';
+import GlobalNav from './components/GlobalNav'
 
 class App extends Component {
+  
   render() {
     return (
       <div>
         <img src={logo} className="App-logo" alt="logo" />
-        <h1>Hello World!</h1>
-        <nav>
-          <Link to="/destinations">Destinations</Link> | {" "}
-          <Link to="/mileages">Mileages</Link> | {" "}
-          <Link to="/users">Users</Link>
-        </nav>
-        <p>Created first React App</p>
-        <Outlet />
+        <Container>
+          <Row>
+          <Col xs='3'>
+            <GlobalNav/>
+          </Col>
+          <Col xs='auto'>
+            <main>
+              <Outlet/>
+            </main>
+          </Col>
+          </Row>
+        </Container>
       </div>
     );
   }

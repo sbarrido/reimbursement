@@ -1,11 +1,12 @@
 import React from 'react'
 import axios from 'axios';
+import { Spinner, Table } from 'reactstrap'
 
 class UsersComponent extends React.Component {
 
     constructor(props) {
         super(props)
-    
+        
         this.state = {
              userDTOs: [],
              isLoaded: false
@@ -28,20 +29,39 @@ class UsersComponent extends React.Component {
 
     render() {
         const { isLoaded, userDTOs } = this.state;
-        const numbers = [1, 2, 3];
         if(!isLoaded) {
             return (
-                <h1>Loading...</h1>
+                <div>
+                    <h1>Loading...</h1>
+                    <Spinner></Spinner>
+                </div>
             )
         }
         return(
             <div>
                 <h1> LOADED! </h1>
-                {userDTOs.map((user) => {
+                <Table>
+                    <thead>
+                        <tr>
+                            <th>
+                                ID #
+                            </th>
+                            <th>
+                                Username
+                            </th>
+                        </tr>
+                    </thead>
+                    {userDTOs.map((user) => {
                     return(
-                        <li key={user.id}>{user.username}</li>
+                       <tbody>
+                           <tr>
+                               <th> { user.id } </th>
+                               <td> { user.username } </td>
+                           </tr>
+                       </tbody>
                     )
                 })}
+                </Table>
             </div>
         );
     }

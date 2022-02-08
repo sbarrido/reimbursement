@@ -17,11 +17,12 @@ ReactDOM.render(
   <React.StrictMode>
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<App />} />
+        <Route path="/" element={<App />}>
           <Route path="/destinations" element={<Destination />} />
           <Route path="/mileages" element={<Mileage />} />
           <Route path="/otherExps" element={<OtherExp />} />
           <Route path="/users" element={<User />} />
+        </Route>
       </Routes>
     </BrowserRouter>
   </React.StrictMode>,
