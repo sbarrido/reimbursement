@@ -10,9 +10,7 @@ import {
     DropdownMenu,
     DropdownItem,
 } from 'reactstrap';
-import {
-    Link
-} from 'react-router-dom';
+
 class GlobalNav extends Component {
 
     render() {
