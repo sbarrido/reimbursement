@@ -4,6 +4,7 @@ import java.util.Arrays;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
+import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
 
 import sbarrido.reimbursement.model.user.Role;
@@ -13,6 +14,7 @@ import sbarrido.reimbursement.repository.user.RoleRepository;
 import sbarrido.reimbursement.repository.user.UserRepository;
 
 @Component
+@Order(1)
 public class UserDBLoader implements CommandLineRunner {
     private final RoleRepository rRepository;
     private final UserRepository uRepository;

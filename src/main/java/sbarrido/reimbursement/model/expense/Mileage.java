@@ -13,7 +13,8 @@ import javax.persistence.CascadeType;
 public class Mileage extends Reimbursement {
     public static final double _COMMUTE = 15.2;
     private static final double _RATE = 0.56;
-    @ManyToOne(cascade = {CascadeType.ALL})
+    //(cascade = {CascadeType.ALL})
+    @ManyToOne
     private Destination destination;
 
     public Mileage() {}

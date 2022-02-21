@@ -6,6 +6,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.hateoas.CollectionModel;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -20,6 +21,7 @@ import sbarrido.reimbursement.service.MileageService;
 import sbarrido.reimbursement.util.assembler.MileageAssembler;
 
 @RestController
+@CrossOrigin(origins = "http://localhost:3000")
 public class MileageController {
     
     @Autowired
