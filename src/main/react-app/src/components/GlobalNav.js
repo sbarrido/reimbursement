@@ -15,39 +15,42 @@ class GlobalNav extends Component {
 
     render() {
         return (
-            <Navbar>
-                <NavbarBrand>Reimb Tracker</NavbarBrand>
-                <Nav vertical tabs>
-                <UncontrolledDropdown
-                    inNavbar
-                    nav
-                >
-                <DropdownToggle
-                    caret
-                    nav
-                >
-                    Reimbursements
-                </DropdownToggle>
-                <DropdownMenu end>
-                    <DropdownItem href="/mileages">
-                       Mileages
-                    </DropdownItem>
-                    <DropdownItem href="/otherExps">
-                        Other Expense
-                    </DropdownItem>
-                    <DropdownItem divider />
-                    <DropdownItem>
-                        Form Report
-                    </DropdownItem>
-                </DropdownMenu>
-                </UncontrolledDropdown>
-                <NavItem>
-                    <NavLink href="/users">
-                        users
-                    </NavLink>
-                </NavItem>
-            </Nav>
-            </Navbar>
+            <Nav vertical tabs navbar>
+                <NavbarBrand>Reimbursement App</NavbarBrand>
+            <UncontrolledDropdown
+                inNavbar
+                nav
+            >
+            <DropdownToggle
+                caret
+                nav
+            >
+                Reimbursements
+            </DropdownToggle>
+            <DropdownMenu down="true">
+                <DropdownItem href="/mileages">
+                    Mileages
+                </DropdownItem>
+                <DropdownItem href="/otherExps">
+                    Other Expense
+                </DropdownItem>
+                <DropdownItem divider />
+                <DropdownItem>
+                    Form Report
+                </DropdownItem>
+            </DropdownMenu>
+            </UncontrolledDropdown>
+            <NavItem>
+                <NavLink href="/users">
+                    Users
+                </NavLink>
+            </NavItem>
+            <NavItem>
+                <NavLink>
+                    Logout
+                </NavLink>
+            </NavItem>
+        </Nav>
         )
     }
 }

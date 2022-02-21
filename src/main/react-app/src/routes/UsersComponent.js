@@ -51,16 +51,16 @@ class UsersComponent extends React.Component {
                             </th>
                         </tr>
                     </thead>
+                    <tbody>
                     {userDTOs.map((user) => {
                     return(
-                       <tbody>
-                           <tr>
-                               <th> { user.id } </th>
-                               <td> { user.username } </td>
-                           </tr>
-                       </tbody>
+                        <tr key={ user.id }>
+                            <th> { user.id } </th>
+                            <td> { user.username } </td>
+                        </tr>
                     )
                 })}
+                    </tbody>
                 </Table>
             </div>
         );

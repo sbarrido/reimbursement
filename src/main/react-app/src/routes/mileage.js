@@ -52,17 +52,17 @@ class mileage extends React.Component {
                             </th>
                         </tr>
                     </thead>
+                    <tbody>
                     {mileageDTOs.map((mileage) => {
                         return(
-                            <tbody>
-                                <tr>
-                                    <th> { mileage.id } </th>
-                                    <td> { mileage.date } </td>
-                                    <td> { mileage.destination.destination } </td>
-                                </tr>
-                            </tbody>
+                            <tr key={ mileage.id }>
+                                <th> { mileage.id } </th>
+                                <td> { mileage.date } </td>
+                                <td> { mileage.destination.destination } </td>
+                            </tr>
                         )
                     })}
+                    </tbody>
                 </Table>
             </div>
         );

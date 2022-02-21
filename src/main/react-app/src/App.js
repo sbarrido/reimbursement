@@ -17,10 +17,10 @@ class App extends Component {
         <img src={logo} className="App-logo" alt="logo" />
         <Container>
           <Row>
-          <Col xs='3'>
+          <Col xs="auto">
             <GlobalNav/>
           </Col>
-          <Col xs='auto'>
+          <Col fluid="true">
             <main>
               <Outlet/>
             </main>
