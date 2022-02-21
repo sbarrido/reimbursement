@@ -28,11 +28,11 @@ class GlobalNav extends Component {
                 >
                     Reimbursements
                 </DropdownToggle>
-                <DropdownMenu right>
-                    <DropdownItem a href="/mileages">
+                <DropdownMenu end>
+                    <DropdownItem href="/mileages">
                        Mileages
                     </DropdownItem>
-                    <DropdownItem a href="/otherExps">
+                    <DropdownItem href="/otherExps">
                         Other Expense
                     </DropdownItem>
                     <DropdownItem divider />
