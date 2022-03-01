@@ -14,7 +14,7 @@ public class OtherExp extends Reimbursement {
 
     public OtherExp(Date date, String description, String vendor, String receiptPath, double cost) {
         setDate(date);
-        setDesc(description);
+        setDescription(description);
         setVendor(vendor);
         setImagePath(receiptPath);
         setCost(cost);

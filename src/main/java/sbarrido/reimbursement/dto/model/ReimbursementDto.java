@@ -17,7 +17,7 @@ public abstract class ReimbursementDto extends RepresentationModel<Reimbursement
     public Date getDate() {
         return this.date;
     }
-    public String getDesc() {
+    public String getDescription() {
         return this.description;
     }
     public double getCost() {

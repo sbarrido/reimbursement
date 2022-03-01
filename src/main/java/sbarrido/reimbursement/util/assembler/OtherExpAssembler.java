@@ -50,7 +50,7 @@ public class OtherExpAssembler extends RepresentationModelAssemblerSupport<Other
     public OtherExp toEntity(OtherExpDto dto) {
         OtherExp target = new OtherExp();
         target.setId(dto.getId());
-        target.setDesc(dto.getDesc());
+        target.setDescription(dto.getDescription());
         target.setDate(dto.getDate());
         target.setCost(dto.getCost());
         target.setImagePath(dto.getReceiptPath());

@@ -52,7 +52,7 @@ public class OtherExpService {
         if(oRepository.existsById(otherExp.getId())) {
             target = oRepository.findById(otherExp.getId()).get();
             target.setDate(otherExp.getDate());
-            target.setDesc(otherExp.getDesc());
+            target.setDescription(otherExp.getDesc());
             target.setVendor(otherExp.getVendor());
             target.setImagePath(otherExp.getImgPath());
             target.setCost(otherExp.getCost());

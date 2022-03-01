@@ -62,7 +62,7 @@ public class MileageAssembler extends RepresentationModelAssemblerSupport<Mileag
         Mileage target = new Mileage();
         target.setId(dto.getId());
         target.setDate(dto.getDate());
-        target.setDesc(dto.getDesc());
+        target.setDescription(dto.getDescription());
         target.setCost(dto.getCost());
         target.setDestination(this.toDest(dto.getDestination()));
 

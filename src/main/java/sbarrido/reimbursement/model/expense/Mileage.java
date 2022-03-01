@@ -21,7 +21,7 @@ public class Mileage extends Reimbursement {
 
     public Mileage(Date date, String description, Destination destination) {
         setDate(date);
-        setDesc(description);
+        setDescription(description);
         setDestination(destination);
         setCost(destination.getDistance());
     }

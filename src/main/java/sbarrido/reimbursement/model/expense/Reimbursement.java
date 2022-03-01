@@ -48,7 +48,7 @@ public abstract class Reimbursement {
     public void setDate(Date d) {
         this.date = d;
     }
-    public void setDesc(String description) {
+    public void setDescription(String description) {
         this.description = description;
     }
 }
