@@ -1,6 +1,9 @@
 import React from 'react'
 import axios from 'axios';
-import { Spinner, Table } from 'reactstrap'
+import { Spinner,
+         Table,
+         Button,
+         ButtonGroup} from 'reactstrap'
 
 class mileage extends React.Component {
 
@@ -39,28 +42,10 @@ class mileage extends React.Component {
             <div>
                 <h1>LOADED!</h1>
                 <Table>
-                    <thead>
-                        <tr>
-                            <th>
-                                ID #
-                            </th>
-                            <th>
-                                Date
-                            </th>
-                            <th>
-                                Destination
-                            </th>
-                        </tr>
-                    </thead>
+                    <Head data={mileageDTOs}/>
                     <tbody>
-                    {mileageDTOs.map((mileage) => {
-                        return(
-                            <tr key={ mileage.id }>
-                                <th> { mileage.id } </th>
-                                <td> { mileage.date } </td>
-                                <td> { mileage.destination.destination } </td>
-                            </tr>
-                        )
+                    {mileageDTOs.map((mileage, index) => {
+                        return <Row key={index} data={mileage}/>
                     })}
                     </tbody>
                 </Table>
@@ -69,4 +54,62 @@ class mileage extends React.Component {
     }
 }
 
+class Head extends React.Component {
+    constructor(props){
+        super(props);
+
+        this.state = {
+            data: props.data
+        }
+    }
+
+    render() {
+        const headers = Object.keys(this.state.data[0]);
+        return(
+            <thead>
+                <tr>
+                    {headers.map((headerItem, index) => {
+                        if(index < 5) {
+                            return <td key={headerItem}>{headerItem.toUpperCase()}</td>
+                        }
+                    })}
+                </tr>
+            </thead>
+        )
+    }
+}
+
+class Row extends React.Component{
+    constructor(props){
+        super(props)
+
+        this.state = {
+            data: props.data
+        }
+    }
+
+    render() {
+        const dataItem = Object.keys(this.state.data);
+        return(
+            <tr>
+                {dataItem.map((key, index) => {
+                    if(index < 5) {
+                        if(index == 4) {
+                            return <td key={index}>{this.state.data[key].destination} </td>
+                        }
+                        else {
+                            return <td key={index}>{this.state.data[key]}</td>
+                        }
+                    }
+                })}
+                <td>
+                    <ButtonGroup>
+                        <Button>Edit</Button>
+                        <Button>Delete</Button>
+                    </ButtonGroup>
+                </td>
+            </tr>
+        )
+    }
+}
 export default mileage;

@@ -1,35 +1,49 @@
 import { Component } from 'react'
 import { Table } from 'reactstrap'
-import Row from './DTORow.js'
-import Head from './DTOHead.js'
 
-class DTOTable extends Component {
+export default class DTOTable extends Component {
     constructor(props) {
         super(props)
 
-        this.state ={
-            name: '',
-            data: props
-        };
+        this.state = {
+            data : props.data
+        }
     }
 
-    render(){
-        const { data } = this.state;
-        const headers = Object.keys(data);
-
+    render() {
         return(
             <Table>
-                <Head headers={ headers }/>
+               <Head data={ this.state.data }/>
                 <tbody>
-                {data.map(( dto ) => {
-                    return(
-                        <Row dto = { dto }/>
-                    )
-                })}
+                    <td>stuff</td>
                 </tbody>
             </Table>
         )
     }
 }
 
-export default DTOTable;
+class Head extends Component {
+    constructor(props){
+        super(props);
+
+        this.state = {
+            data: props.data
+        }
+
+    }
+
+    render() {
+        const headers = Object.keys(this.state.data[0]);
+        return(
+            <thead>
+                <tr>
+                    {headers.map((headerItem, index) => {
+                        if(index < 5) {
+                            return <td key={headerItem}>{headerItem.toUpperCase()}</td>
+                        }
+                    })}
+                </tr>
+            </thead>
+        )
+    }
+}

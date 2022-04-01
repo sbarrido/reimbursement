@@ -1,6 +1,13 @@
-import React from 'react'
+import React, {Component} from 'react'
 import axios from 'axios'
-import { Spinner, Table } from 'reactstrap'
+import { Spinner,
+    ListGroup,
+    ListGroupItem,
+    Collapse,
+    Card,
+    CardBody,
+    Button,
+    ButtonGroup  } from 'reactstrap'
 import { connectTable } from '../util/TableUTils.js'
 import DTOTable from '../components/DTOTable.js'
 
@@ -9,10 +16,28 @@ class UsersComponent extends React.Component {
     constructor(props) {
         super(props)
 
+        this.state = {
+            userDTOs: [],
+            isLoaded: false
+        };
     }
+    componentDidMount() {
+        const url = 'http://localhost:8080/api/users';
+        axios
+            .get(url)
+            .then(({ data }) => {
+                this.setState({
+                    userDTOs: data._embedded.userDtoList,
+                    isLoaded: true
+                })
+            })
+            .catch((err) => {})
+    }
+
     render() {
-        const MyTable = connectTable(DTOTable);
-        return <MyTable/>;
+        return(
+            <ButtonTable/>
+        )
     }
     // constructor(props) {
     //     super(props)
@@ -76,5 +101,56 @@ class UsersComponent extends React.Component {
     //     );
     // }
 }
+class ButtonTable extends Component {
+    constructor(props){
+        super(props)
+        
+        this.state = {
+            showFirst: false,
+            showSecond: false,
+            showThird: false
+        };
+    }
 
+    toggle() {
+        this.setState({
+            showFirst: !this.state.showFirst
+        })
+    }
+    render() {
+        return(
+            <ListGroup>
+                <ListGroupItem
+                 action
+                 tag="a"
+                 active={this.state.showFirst}
+                 onClick={()=> this.toggle()}
+                >
+                    Item
+                    <Collapse isOpen = { this.state.showFirst }>
+                        <Card>
+                            <ButtonGroup>
+                                <Button>Edit</Button>
+                                <Button>Remove</Button>
+                            </ButtonGroup>
+                        </Card>
+                    </Collapse>
+                </ListGroupItem>
+                <ListGroupItem
+                 action
+                 tag="button"
+                >
+                    Item
+                    <Collapse>
+                        <Card>
+                            <CardBody>
+                                Collapse Card
+                            </CardBody>
+                        </Card>
+                    </Collapse>
+                </ListGroupItem>
+            </ListGroup>
+        )
+    }
+}
 export default UsersComponent;
