@@ -59,6 +59,7 @@ public class MileageController {
     @DeleteMapping(value = "/mileages/{id}")
     public void delete(@PathVariable Long id) {
         Mileage target = mileageService.getMileage(id);
+        target.setDestination(null);
         mileageService.deleteMileage(target);
     }
 }

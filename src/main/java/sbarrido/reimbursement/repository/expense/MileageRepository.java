@@ -14,4 +14,7 @@ public interface MileageRepository extends CrudRepository<Mileage, Long> {
    @Query("select m from Mileage m where year(m.date) = :year and month(m.date) = :month")
    List<Mileage> findByYearAndMonth(@Param("year") Integer year, @Param("month") Integer month);
    Mileage findByDestination(Destination dest);
+
+   @Query("SELECT m FROM Mileage m WHERE m.destination = :destination")
+   List<Mileage> findAllByDestination(@Param("destination") Destination destination);
 }

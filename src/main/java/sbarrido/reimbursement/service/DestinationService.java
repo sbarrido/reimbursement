@@ -1,20 +1,27 @@
 package sbarrido.reimbursement.service;
 
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import sbarrido.reimbursement.model.expense.Mileage;
 import sbarrido.reimbursement.repository.destination.DestinationRepository;
 import sbarrido.reimbursement.model.destination.Destination;
+import sbarrido.reimbursement.repository.expense.MileageRepository;
 
+import javax.persistence.EntityManager;
 import java.util.ArrayList;
+import java.util.List;
 
 @Service
 public class DestinationService {
     private DestinationRepository dRepository;
+    private MileageRepository mRepository;
 
-    public DestinationService(DestinationRepository repo) {
+    public DestinationService(DestinationRepository repo, MileageRepository mRepo) {
         this.dRepository = repo;
+        this.mRepository = mRepo;
     }
 
     public ArrayList<Destination> getAllDestination() {
@@ -24,7 +31,7 @@ public class DestinationService {
     }
     public Destination getDestination(Destination destination) {
         Destination target = dRepository.findById(destination.getId()).get();
-            
+
         return target;
     }
     public Destination getDestination(String location) {
@@ -54,7 +61,16 @@ public class DestinationService {
         
         return target;
     }
+
+    @Autowired
+    private EntityManager entityManager;
+
+    @Transactional
     public void deleteDestination(Destination destination) {
-        dRepository.delete(destination);
+        List<Mileage> mileageList = mRepository.findAllByDestination(destination);
+        for (Mileage i: mileageList) {
+            entityManager.remove(i);
+        }
+        entityManager.remove(destination);
     }
 }
