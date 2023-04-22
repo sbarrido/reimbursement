@@ -15,49 +15,39 @@ class createForm extends React.Component {
                 <Row>
                     <Col md={6}>
                         <FormGroup>
-                            <Label for="exampleEmail">
-                                Email
+                            <Label for="Date">
+                                Date
                             </Label>
                             <Input
-                                id="exampleEmail"
-                                name="email"
-                                placeholder="with a placeholder"
-                                type="email"
+                                id="mileageDate"
+                                name="date"
+                                placeholder="MM/DD/YYYY"
+                                type="date"
                             />
                         </FormGroup>
                     </Col>
                     <Col md={6}>
                         <FormGroup>
-                            <Label for="examplePassword">
-                                Password
+                            <Label for="location">
+                                Location
                             </Label>
                             <Input
-                                id="examplePassword"
-                                name="password"
-                                placeholder="password placeholder"
-                                type="password"
+                                id="locationData"
+                                name="location"
+                                placeholder="Location Information"
+                                type="location"
                             />
                         </FormGroup>
                     </Col>
                 </Row>
                 <FormGroup>
-                    <Label for="exampleAddress">
-                        Address
+                    <Label for="description">
+                        Description
                     </Label>
                     <Input
-                        id="exampleAddress"
-                        name="address"
-                        placeholder="1234 Main St"
-                    />
-                </FormGroup>
-                <FormGroup>
-                    <Label for="exampleAddress2">
-                        Address 2
-                    </Label>
-                    <Input
-                        id="exampleAddress2"
-                        name="address2"
-                        placeholder="Apartment, studio, or floor"
+                        id="description"
+                        name="description"
+                        placeholder="Basic Description of Reimbursement"
                     />
                 </FormGroup>
                 <Row>
@@ -109,7 +99,7 @@ class createForm extends React.Component {
                     </Label>
                 </FormGroup>
                 <Button>
-                    Sign in
+                    Sign in 
                 </Button>
             </Form>
         );
