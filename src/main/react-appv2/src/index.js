@@ -7,6 +7,7 @@ import Destination from './routes/destination';
 import Mileage from './routes/mileage';
 import OtherExp from './routes/otherExp';
 import User from './routes/UsersComponent';
+import Form from './routes/createForm';
 import reportWebVitals from './reportWebVitals';
 import { 
   BrowserRouter,
@@ -22,7 +23,8 @@ ReactDOM.render(
           <Route path="/destinations" element={<Destination />} />
           <Route path="/mileages" element={<Mileage />} />
           <Route path="/otherExps" element={<OtherExp />} />
-          <Route path="/users" element={<User />} />
+          <Route path="/users" element={<User />} />\
+          <Route path="/createForm" element={<Form /> } />
         </Route>
       </Routes>
     </BrowserRouter>

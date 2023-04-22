@@ -4,6 +4,7 @@ import { Spinner,
          Table,
          Button,
          ButtonGroup} from 'reactstrap'
+import {Link} from "react-router-dom";
 
 class mileage extends React.Component {
 
@@ -49,6 +50,10 @@ class mileage extends React.Component {
                     })}
                     </tbody>
                 </Table>
+                <Link to={"/createForm"}>
+                    <Button>Create
+                    </Button>
+                </Link>
             </div>
         );
     }
