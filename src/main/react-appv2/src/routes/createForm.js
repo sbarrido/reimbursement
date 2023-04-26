@@ -1,17 +1,46 @@
 import React from "react";
 import {Button, Col, Form, FormGroup, Input, Label, Row} from "reactstrap";
+import axios from "axios";
 
 class createForm extends React.Component {
     constructor(props) {
         super(props)
 
         this.state = {
+            destinationDTOs: [],
+            isLoaded: false
         };
     }
+    handleSubmit(event) {
+        let newDate = new Date(event.target.date.value);
+        let dest = event.target.destination.value;
+        let description = event.target.description.value;
+        const formatDate =
+            newDate.getFullYear() + "-" +
+            newDate.getMonth() + "-" +
+            newDate.getDay();
 
+        const url ='http://localhost:8080/api/destinations/' + dest;
+        console.log(url);
+    };
+    componentDidMount() {
+        const url = 'http://localhost:8080/api/destinations';
+        axios
+            .get(url)
+            .then(({ data }) => {
+            this.setState({
+                destinationDTOs: data._embedded.destinationDtoList,
+                isLoaded: true
+            })
+        })
+        .catch((err) => {})
+    }
     render(){
+        const { destinationDTOs } = this.state;
+
         return(
-            <Form>
+            <Form onSubmit={this.handleSubmit}>
+                <h1>Mileage Creation Form</h1>
                 <Row>
                     <Col md={6}>
                         <FormGroup>
@@ -26,20 +55,20 @@ class createForm extends React.Component {
                             />
                         </FormGroup>
                     </Col>
-                    <Col md={6}>
-                        <FormGroup>
-                            <Label for="location">
-                                Location
-                            </Label>
-                            <Input
-                                id="locationData"
-                                name="location"
-                                placeholder="Location Information"
-                                type="location"
-                            />
-                        </FormGroup>
-                    </Col>
                 </Row>
+                <FormGroup>
+                    <Label for="destinationSelect">
+                        Select Destination
+                    </Label>
+                    <Input
+                        id="destinationSelect"
+                        name="destination"
+                        type="select">
+                        {destinationDTOs.map((destination, index) => {
+                            return <option key={index} value={destination.destination}>{destination.destination}</option>
+                        })}
+                    </Input>
+                </FormGroup>
                 <FormGroup>
                     <Label for="description">
                         Description
@@ -50,56 +79,8 @@ class createForm extends React.Component {
                         placeholder="Basic Description of Reimbursement"
                     />
                 </FormGroup>
-                <Row>
-                    <Col md={6}>
-                        <FormGroup>
-                            <Label for="exampleCity">
-                                City
-                            </Label>
-                            <Input
-                                id="exampleCity"
-                                name="city"
-                            />
-                        </FormGroup>
-                    </Col>
-                    <Col md={4}>
-                        <FormGroup>
-                            <Label for="exampleState">
-                                State
-                            </Label>
-                            <Input
-                                id="exampleState"
-                                name="state"
-                            />
-                        </FormGroup>
-                    </Col>
-                    <Col md={2}>
-                        <FormGroup>
-                            <Label for="exampleZip">
-                                Zip
-                            </Label>
-                            <Input
-                                id="exampleZip"
-                                name="zip"
-                            />
-                        </FormGroup>
-                    </Col>
-                </Row>
-                <FormGroup check>
-                    <Input
-                        id="exampleCheck"
-                        name="check"
-                        type="checkbox"
-                    />
-                    <Label
-                        check
-                        for="exampleCheck"
-                    >
-                        Check me out
-                    </Label>
-                </FormGroup>
-                <Button>
-                    Sign in 
+                <Button type="submit">
+                    Create
                 </Button>
             </Form>
         );
