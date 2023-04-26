@@ -1,9 +1,12 @@
 package sbarrido.reimbursement.model.expense;
 
 import sbarrido.reimbursement.model.destination.Destination;
+
+import java.text.DecimalFormat;
 import java.util.Date;
 
 import javax.persistence.*;
+
 
 @Entity
 @DiscriminatorValue("mileage")
@@ -21,13 +24,13 @@ public class Mileage extends Reimbursement {
         setDate(date);
         setDescription(description);
         setDestination(destination);
-        setCost(destination.getDistance());
+        setCost(calculate());
     }
 
     public double calculate() {
-        double val = (this.cost - Mileage._COMMUTE) * Mileage._RATE;
+        double val = (destination.getDistance() - Mileage._COMMUTE) * Mileage._RATE;
 
-        return val;
+        return  Math.round(val * 100.0) / 100.0;
     }
     public void setDestination(Destination loc) {
         this.destination = loc;

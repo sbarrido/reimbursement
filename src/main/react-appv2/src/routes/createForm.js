@@ -10,18 +10,18 @@ class createForm extends React.Component {
             destinationDTOs: [],
             isLoaded: false
         };
+        this.handleSubmit = this.handleSubmit.bind(this);
     }
     handleSubmit(event) {
+        const { destinationDTOs } = this.state;
         let newDate = new Date(event.target.date.value);
-        let dest = event.target.destination.value;
+        let destID = event.target.destination.value;
+        let destination = destinationDTOs[destID];
         let description = event.target.description.value;
         const formatDate =
             newDate.getFullYear() + "-" +
             newDate.getMonth() + "-" +
             newDate.getDay();
-
-        const url ='http://localhost:8080/api/destinations/' + dest;
-        console.log(url);
     };
     componentDidMount() {
         const url = 'http://localhost:8080/api/destinations';
@@ -65,7 +65,7 @@ class createForm extends React.Component {
                         name="destination"
                         type="select">
                         {destinationDTOs.map((destination, index) => {
-                            return <option key={index} value={destination.destination}>{destination.destination}</option>
+                            return <option key={index} value={index}>{destination.destination}</option>
                         })}
                     </Input>
                 </FormGroup>
