@@ -52,6 +52,7 @@ public class MileageController {
     @PostMapping(value = "/mileages", produces = "application/json")
     public Mileage create(@RequestBody MileageDto mileageDTO) {
         Mileage target = mileageAssembler.toEntity(mileageDTO);
+        target.setCost(target.calculate());
         target = mileageService.createMileage(target);
 
         return target;

@@ -44,6 +44,8 @@ public class MileageService {
         Mileage target = null;
         if(!mRepository.existsById(mileage.getId())) {
             target = mRepository.save(mileage);
+        } else {
+            updateMileage(mileage);
         }
 
         return target;
