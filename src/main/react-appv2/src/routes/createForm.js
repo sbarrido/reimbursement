@@ -13,15 +13,35 @@ class createForm extends React.Component {
         this.handleSubmit = this.handleSubmit.bind(this);
     }
     handleSubmit(event) {
-        const { destinationDTOs } = this.state;
+        const { destinationDTOs} = this.state;
         let newDate = new Date(event.target.date.value);
-        let destID = event.target.destination.value;
-        let destination = destinationDTOs[destID];
+        let destinationString = event.target.destination.value;
+        let destination = JSON.parse(destinationString);
+        let targetID = event.target.id.value;
         let description = event.target.description.value;
         const formatDate =
             newDate.getFullYear() + "-" +
             newDate.getMonth() + "-" +
             newDate.getDay();
+        let destinationDTO = {};
+        destinationDTO.id = destination.id;
+        destinationDTO.destination = destination.destination;
+        destinationDTO.distance = destination.distance;
+
+
+        let mileageDTO = {};
+        mileageDTO.id = targetID;
+        mileageDTO.date = newDate;
+        mileageDTO.description = description;
+        mileageDTO.destination = destinationDTO;
+
+        const url = 'http://localhost:8080/api/mileages';
+        axios({
+            method: 'post',
+            url: url,
+            data: mileageDTO
+        });
+        alert("SUCCESS");
     };
     componentDidMount() {
         const url = 'http://localhost:8080/api/destinations';
@@ -42,6 +62,18 @@ class createForm extends React.Component {
             <Form onSubmit={this.handleSubmit}>
                 <h1>Mileage Creation Form</h1>
                 <Row>
+                    <Col md={6}>
+                        <FormGroup>
+                            <Label for="id">
+                                ID
+                            </Label>
+                            <Input
+                                id="mileageID"
+                                name="id"
+                                placeholder="0"
+                            />
+                        </FormGroup>
+                    </Col>
                     <Col md={6}>
                         <FormGroup>
                             <Label for="Date">
@@ -65,7 +97,7 @@ class createForm extends React.Component {
                         name="destination"
                         type="select">
                         {destinationDTOs.map((destination, index) => {
-                            return <option key={index} value={index}>{destination.destination}</option>
+                            return <option key={index} data={destination} value={JSON.stringify(destination)}>{destination.destination}</option>
                         })}
                     </Input>
                 </FormGroup>

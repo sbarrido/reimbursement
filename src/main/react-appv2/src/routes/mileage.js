@@ -98,21 +98,21 @@ class Row extends React.Component{
         return(
             <tr>
                 {dataItem.map((key, index) => {
-                    if(index < 5) {
+                    if(index < 6) {
                         if(index == 4) {
                             return <td key={index}>{this.state.data[key].destination} </td>
+                        } else if(index == 5) {
+                            return(
+                            <ButtonGroup>
+                                    <Button key={index} data={dataItem[0]}>Edit</Button>
+                                    <Button key={index} data={dataItem[0]}>Delete</Button>
+                            </ButtonGroup>)
                         }
                         else {
                             return <td key={index}>{this.state.data[key]}</td>
                         }
                     }
                 })}
-                <td>
-                    <ButtonGroup>
-                        <Button>Edit</Button>
-                        <Button>Delete</Button>
-                    </ButtonGroup>
-                </td>
             </tr>
         )
     }
