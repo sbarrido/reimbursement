@@ -41,9 +41,9 @@ public class DestinationController {
         
         return target;
     }
-    @DeleteMapping(value= "/destinations/{location}")
-    public void delete(@PathVariable String location) {
-        Destination target = destinationService.getDestination(location);
-        destinationService.deleteDestination(target);
-    }
+//    @DeleteMapping(value= "/destinations/{location}")
+//    public void delete(@PathVariable String location) {
+//        Destination target = destinationService.getDestination(location);
+//        destinationService.deleteDestination(target);
+//    }
 }
