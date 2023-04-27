@@ -1,5 +1,5 @@
-package sbarrido.reimbursement.model.user;
-
-public enum UserRoles {
-    ADMIN, USER
-}
+//package sbarrido.reimbursement.model.user;
+//
+//public enum UserRoles {
+//    ADMIN, USER
+//}
