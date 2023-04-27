@@ -14,7 +14,7 @@ import sbarrido.reimbursement.repository.destination.DestinationRepository;
 import sbarrido.reimbursement.repository.expense.MileageRepository;
 
 @Component
-@Order(2)
+@Order(1)
 public class MileageDBLoader implements CommandLineRunner {
     private final DestinationRepository dRepository;
     private final MileageRepository mRepository;
