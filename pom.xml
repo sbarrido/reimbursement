@@ -15,10 +15,28 @@
 	<description>Web Application for Reimbursement Tracking</description>
 	<properties>
 		<java.version>11</java.version>
-		<frontend-src-dir>${project.basedir}/src/main/react-app</frontend-src-dir>
+		<frontend-src-dir>${project.basedir}/src/main/react-appv2</frontend-src-dir>
 		<node.version>v16.13.2</node.version>
 		<frontend-maven-plugin.version>1.12.0</frontend-maven-plugin.version>
 	</properties>
+	<packaging>jar</packaging>
+	<build>
+		<plugins>
+			<plugin>
+				<artifactId>maven-assembly-plugin</artifactId>
+				<configuration>
+					<archive>
+						<manifest>
+							<mainClass>sbarrido.reimbursement.ReimbursementApplication</mainClass>
+						</manifest>
+					</archive>
+					<descriptorRefs>
+						<descriptorRef>jar-with-dependencies</descriptorRef>
+					</descriptorRefs>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
 	<dependencies>
 
 		<dependency>
@@ -92,4 +110,5 @@
 			<artifactId>spring-boot-starter-test</artifactId>
 		</dependency>
 	</dependencies>
+
 </project>
