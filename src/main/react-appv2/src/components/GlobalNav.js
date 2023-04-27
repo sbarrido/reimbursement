@@ -30,9 +30,9 @@ class GlobalNav extends Component {
                 <DropdownItem href="/mileages">
                     Mileages
                 </DropdownItem>
-                <DropdownItem href="/otherExps">
-                    Other Expense
-                </DropdownItem>
+                {/*<DropdownItem href="/otherExps">*/}
+                {/*    Other Expense*/}
+                {/*</DropdownItem>*/}
                 <DropdownItem divider />
                 <DropdownItem>
                     Form Report
