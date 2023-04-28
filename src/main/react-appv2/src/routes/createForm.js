@@ -60,7 +60,7 @@ class createForm extends React.Component {
 
         return(
             <Form onSubmit={this.handleSubmit}>
-                <h1>Mileage Form</h1>
+                <h1>Mileage Creation Form</h1>
                 <Row>
                     <Col md={6}>
                         <FormGroup>
