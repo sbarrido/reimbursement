@@ -13,7 +13,7 @@ import sbarrido.reimbursement.util.assembler.DestinationAssembler;
 import java.util.ArrayList;
 
 @RestController
-@CrossOrigin(origins = "https://reactreimb.azurewebsites.net/")
+@CrossOrigin(origins = "localhost:3000")
 public class DestinationController {
     
     @Autowired

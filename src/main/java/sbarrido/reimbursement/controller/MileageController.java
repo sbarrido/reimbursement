@@ -21,7 +21,7 @@ import sbarrido.reimbursement.service.MileageService;
 import sbarrido.reimbursement.util.assembler.MileageAssembler;
 
 @RestController
-@CrossOrigin(origins = "https://reactreimb.azurewebsites.net/")
+@CrossOrigin(origins = "localhost:3000")
 public class MileageController {
     
     @Autowired
