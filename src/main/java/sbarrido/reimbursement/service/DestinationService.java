@@ -62,15 +62,15 @@ public class DestinationService {
         return target;
     }
 
-    @Autowired
-    private EntityManager entityManager;
-
-    @Transactional
-    public void deleteDestination(Destination destination) {
-        List<Mileage> mileageList = mRepository.findAllByDestination(destination);
-        for (Mileage i: mileageList) {
-            entityManager.remove(i);
-        }
-        entityManager.remove(destination);
-    }
+//    @Autowired
+//    private EntityManager entityManager;
+//
+//    @Transactional
+//    public void deleteDestination(Destination destination) {
+//        List<Mileage> mileageList = mRepository.findAllByDestination(destination);
+//        for (Mileage i: mileageList) {
+//            entityManager.remove(i);
+//        }
+//        entityManager.remove(destination);
+//    }
 }

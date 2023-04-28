@@ -35,7 +35,7 @@ class createForm extends React.Component {
         mileageDTO.description = description;
         mileageDTO.destination = destinationDTO;
 
-        const url = 'http://localhost:8080/api/mileages';
+        const url = 'localhost:8080/api/mileages';
         axios({
             method: 'post',
             url: url,
@@ -44,7 +44,7 @@ class createForm extends React.Component {
         alert("SUCCESS");
     };
     componentDidMount() {
-        const url = 'http://localhost:8080/api/destinations';
+        const url = 'localhost:8080/api/destinations';
         axios
             .get(url)
             .then(({ data }) => {

@@ -16,8 +16,14 @@ class mileage extends React.Component {
             isLoaded: false
         };
     }
+    childCallBack(dataID) {
+        const url = 'localhost:8080/api/mileages';
+        axios
+            .delete(url + "/" + dataID)
+            .then(window.location.reload());
+    }
     componentDidMount() {
-        const url = 'http://localhost:8080/api/mileages';
+        const url = 'localhost:8080/api/mileages';
         axios
             .get(url)
             .then(({ data }) => {
@@ -47,6 +53,7 @@ class mileage extends React.Component {
                     <tbody>
                     {mileageDTOs.map((mileage, index) => {
                         return <Row key={index} data={mileage}/>
+                        return <Row handleCallback={this.childCallBack} key={index} data={mileage}/>
                     })}
                     </tbody>
                 </Table>
@@ -89,6 +96,7 @@ class Row extends React.Component{
         super(props)
 
         this.state = {
+            props: props,
             data: props.data
         }
     }
@@ -103,9 +111,11 @@ class Row extends React.Component{
                             return <td key={index}>{this.state.data[key].destination} </td>
                         } else if(index == 5) {
                             return(
-                            <ButtonGroup>
-                                    <Button key={index} data={dataItem[0]}>Edit</Button>
-                                    <Button key={index} data={dataItem[0]}>Delete</Button>
+                                <ButtonGroup key={index}>
+                                    <Link to="/createForm">
+                                        <Button key={index} data={dataItem[0]}>Edit</Button>
+                                    </Link>
+                                    <Button onClick={() => this.props.handleCallback(this.state.data.id)} key={index} data={dataItem[0]}>Delete</Button>
                             </ButtonGroup>)
                         }
                         else {

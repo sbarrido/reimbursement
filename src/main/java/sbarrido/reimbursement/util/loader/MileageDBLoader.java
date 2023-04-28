@@ -14,7 +14,7 @@ import sbarrido.reimbursement.repository.destination.DestinationRepository;
 import sbarrido.reimbursement.repository.expense.MileageRepository;
 
 @Component
-@Order(2)
+@Order(1)
 public class MileageDBLoader implements CommandLineRunner {
     private final DestinationRepository dRepository;
     private final MileageRepository mRepository;
@@ -24,7 +24,7 @@ public class MileageDBLoader implements CommandLineRunner {
         this.dRepository = destinations;
         this.mRepository = mileage;
     }
-    
+
     @Override
     public void run(String... strings) throws Exception {
         initializeDestinations();
@@ -52,7 +52,7 @@ public class MileageDBLoader implements CommandLineRunner {
         Mileage washington = new Mileage(myDate, mydesc, this.dRepository.findByLocation("Washington"));
 
         Mileage chicagoDiff = new Mileage(diffDate, mydesc, this.dRepository.findByLocation("Chicago"));
-        
+
 
         this.mRepository.save(chicago);
         this.mRepository.save(indy);

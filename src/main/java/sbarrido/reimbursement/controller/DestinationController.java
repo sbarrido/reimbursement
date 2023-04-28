@@ -13,7 +13,7 @@ import sbarrido.reimbursement.util.assembler.DestinationAssembler;
 import java.util.ArrayList;
 
 @RestController
-@CrossOrigin(origins = "http://localhost:3000")
+@CrossOrigin(origins = "localhost:3000")
 public class DestinationController {
     
     @Autowired
@@ -41,9 +41,9 @@ public class DestinationController {
         
         return target;
     }
-    @DeleteMapping(value= "/destinations/{location}")
-    public void delete(@PathVariable String location) {
-        Destination target = destinationService.getDestination(location);
-        destinationService.deleteDestination(target);
-    }
+//    @DeleteMapping(value= "/destinations/{location}")
+//    public void delete(@PathVariable String location) {
+//        Destination target = destinationService.getDestination(location);
+//        destinationService.deleteDestination(target);
+//    }
 }
