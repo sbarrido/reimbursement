@@ -13,7 +13,7 @@ import sbarrido.reimbursement.util.assembler.DestinationAssembler;
 import java.util.ArrayList;
 
 @RestController
-@CrossOrigin(origins = "localhost:3000")
+@CrossOrigin(origins = "localhost:8080")
 public class DestinationController {
     
     @Autowired

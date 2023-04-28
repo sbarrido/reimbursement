@@ -52,7 +52,6 @@ class mileage extends React.Component {
                     <Head data={mileageDTOs}/>
                     <tbody>
                     {mileageDTOs.map((mileage, index) => {
-                        return <Row key={index} data={mileage}/>
                         return <Row handleCallback={this.childCallBack} key={index} data={mileage}/>
                     })}
                     </tbody>
