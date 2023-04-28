@@ -25,7 +25,7 @@
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
 				<configuration>
-					<mainClass>sbarrido.reimbursement.ReimbursementApplication</mainClass>
+					<mainClass>sbarrido.reimbursement.Application</mainClass>
 					<layout>JAR</layout>
 				</configuration>
 			</plugin>
