@@ -13,7 +13,7 @@ import sbarrido.reimbursement.util.assembler.DestinationAssembler;
 import java.util.ArrayList;
 
 @RestController
-@CrossOrigin(origins = "reimbursement-production.up.railway.app")
+@CrossOrigin()
 public class DestinationController {
     
     @Autowired

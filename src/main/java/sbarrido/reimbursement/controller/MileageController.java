@@ -21,7 +21,7 @@ import sbarrido.reimbursement.service.MileageService;
 import sbarrido.reimbursement.util.assembler.MileageAssembler;
 
 @RestController
-@CrossOrigin(origins = "reimbursement-production.up.railway.app")
+@CrossOrigin()
 public class MileageController {
     
     @Autowired
