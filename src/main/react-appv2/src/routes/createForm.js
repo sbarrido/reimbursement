@@ -35,7 +35,7 @@ class createForm extends React.Component {
         mileageDTO.description = description;
         mileageDTO.destination = destinationDTO;
 
-        const url = '\n' +
+        const url =
             'reimbursement-production.up.railway.app/api/mileages';
         axios({
             method: 'post',
@@ -45,7 +45,7 @@ class createForm extends React.Component {
         alert("SUCCESS");
     };
     componentDidMount() {
-        const url = '\n' +
+        const url =
             'reimbursement-production.up.railway.app/api/destinations';
         axios
             .get(url)
