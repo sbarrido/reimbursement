@@ -17,13 +17,15 @@ class mileage extends React.Component {
         };
     }
     childCallBack(dataID) {
-        const url = 'http://localhost:8080/api/mileages';
+        const url = '\n' +
+            'reimbursement-production.up.railway.app/api/mileages';
         axios
             .delete(url + "/" + dataID)
             .then(window.location.reload());
     }
     componentDidMount() {
-        const url = 'http://localhost:8080/api/mileages';
+        const url = '\n' +
+            'reimbursement-production.up.railway.app/api/mileages';
         axios
             .get(url)
             .then(({ data }) => {
